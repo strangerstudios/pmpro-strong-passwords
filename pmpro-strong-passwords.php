@@ -17,7 +17,7 @@ function pmpro_strong_password_check( $pmpro_continue_registration )
 {	
 	//only bother checking if there are no errors so far
 	if(!$pmpro_continue_registration)
-		return $pmpro_continue_registration
+		return $pmpro_continue_registration;
 	
 	$username = $_REQUEST['username'];
 	$password = $_REQUEST['password'];
