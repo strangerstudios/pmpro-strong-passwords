@@ -13,11 +13,19 @@ Author URI: http://slocumstudio.com
  * This function checks to make sure the user has submitted a strong password
  * by checking for length, lowercase/uppercase, numbers, special characters, and matching username.
  */
-add_filter( 'pmpro_registration_checks', 'pmpro_strong_password_check' );
-function pmpro_strong_password_check( $pmpro_continue_registration ) {
-  $username = $_REQUEST['username'];
+function pmpro_strong_password_check( $pmpro_continue_registration ) 
+{	
+	//only bother checking if there are no errors so far
+	if(!$pmpro_continue_registration)
+		return $pmpro_continue_registration
+	
+	$username = $_REQUEST['username'];
 	$password = $_REQUEST['password'];
-
+	
+	// no password (existing user is checking out)
+	if(empty($password))
+		return $pmpro_continue_registration;
+	
 	// Check for length (8 characters)
 	if ( strlen( $password ) < 8 ) {
 		pmpro_setMessage( 'Your password must be at least 8 characters long.', 'pmpro_error' );
@@ -63,11 +71,12 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 	// If we've passed all of the above, return the current continue registration flag.
 	return $pmpro_continue_registration;
 }
+add_filter( 'pmpro_registration_checks', 'pmpro_strong_password_check' );
 
-add_filter("pmpro_checkout_after_password", "pmprosp_pmpro_checkout_after_password");
 function pmprosp_pmpro_checkout_after_password()
 {
 ?>
 <p>Note: Your password must be at least 8 characters long and contain upper and lowercase letters, a number, and a special character.</p>
 <?php
 }
+add_filter("pmpro_checkout_after_password", "pmprosp_pmpro_checkout_after_password");
