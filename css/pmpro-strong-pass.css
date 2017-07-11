@@ -1,0 +1,15 @@
+#password-strength{
+	font-size:12px;
+    float:right;
+    padding:1%;
+    color:white;
+    border-radius:5px;
+}
+
+.short{background:red;}
+
+.bad{background:orange;}
+
+.good{background:gold;}
+
+.strong{background:green;}
