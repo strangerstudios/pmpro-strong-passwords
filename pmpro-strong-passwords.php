@@ -7,7 +7,18 @@ Description: Force users to submit strong passwords.
 Version: .1
 Author: Scott Sousa
 Author URI: http://slocumstudio.com
+Text Domain: pmpro-strong-passwords
+Domain Path: /languages
 */
+
+/**
+ * Load text domain
+ * pmprosp_load_plugin_text_domain
+ */
+function pmprosp_load_plugin_text_domain() {
+	load_plugin_textdomain( 'pmpro-strong-passwords', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
+}
+add_action( 'plugins_loaded', 'pmprosp_load_plugin_text_domain' ); 
 
 /**
  * This function checks to make sure the user has submitted a strong password
@@ -28,43 +39,43 @@ function pmpro_strong_password_check( $pmpro_continue_registration )
 	
 	// Check for length (8 characters)
 	if ( strlen( $password ) < 8 ) {
-		pmpro_setMessage( 'Your password must be at least 8 characters long.', 'pmpro_error' );
+		pmpro_setMessage( __( 'Your password must be at least 8 characters long.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
 	// Check for username match
 	if ( $password == $username ) {
-		pmpro_setMessage( 'Your password must not match your username.', 'pmpro_error' );
+		pmpro_setMessage( __( 'Your password must not match your username.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
 	// Check for containing username
 	if ( strpos( $password, $username ) !== false ) {
-		pmpro_setMessage( 'Your password must not contain your username.', 'pmpro_error' );
+		pmpro_setMessage( __( 'Your password must not contain your username.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
 	// Check for lowercase
 	if ( ! preg_match( '/[a-z]/', $password ) ) {
-		pmpro_setMessage( 'Your password must contain at least 1 lowercase letter.', 'pmpro_error' );
+		pmpro_setMessage( __( 'Your password must contain at least 1 lowercase letter.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
 	// Check for uppercase
 	if ( ! preg_match( '/[A-Z]/', $password ) ) {
-		pmpro_setMessage( 'Your password must contain at least 1 uppercase letter.', 'pmpro_error' );
+		pmpro_setMessage( __( 'Your password must contain at least 1 uppercase letter.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
 	// Check for numbers
 	if ( ! preg_match( '/[0-9]/', $password ) ) {
-		pmpro_setMessage( 'Your password must contain at least 1 number.', 'pmpro_error' );
+		pmpro_setMessage( __( 'Your password must contain at least 1 number.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
 	// Check for special characters
 	if ( ! preg_match( '/[\W]/', $password ) ) {
-		pmpro_setMessage( 'Your password must contain at least 1 special character.', 'pmpro_error' );
+		pmpro_setMessage( __( 'Your password must contain at least 1 special character.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
@@ -76,7 +87,7 @@ add_filter( 'pmpro_registration_checks', 'pmpro_strong_password_check' );
 function pmprosp_pmpro_checkout_after_password()
 {
 ?>
-<p>Note: Your password must be at least 8 characters long and contain upper and lowercase letters, a number, and a special character.</p>
+<p><?php _e( 'Note: Your password must be at least 8 characters long and contain upper and lowercase letters, a number, and a special character.', 'pmpro-strong-passwords' ) ?></p>
 <?php
 }
 add_filter("pmpro_checkout_after_password", "pmprosp_pmpro_checkout_after_password");
