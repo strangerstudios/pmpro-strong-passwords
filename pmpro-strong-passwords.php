@@ -18,7 +18,7 @@ Domain Path: /languages
 function pmprosp_load_plugin_text_domain() {
 	load_plugin_textdomain( 'pmpro-strong-passwords', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
 }
-add_action( 'plugins_loaded', 'pmprosp_load_plugin_text_domain' ); 
+add_action( 'init', 'pmprosp_load_plugin_text_domain' ); 
 
 /**
  * This function checks to make sure the user has submitted a strong password
