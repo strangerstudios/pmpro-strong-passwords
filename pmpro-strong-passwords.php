@@ -74,28 +74,36 @@ function pmpro_strong_password_check( $pmpro_continue_registration )
 	}
 
 	// Check for username match
+	/*
 	if ( $password == $username ) {
 		pmpro_setMessage( __( 'Your password must not match your username.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
+	*/
 
 	// Check for containing username
+	/*
 	if ( strpos( $password, $username ) !== false ) {
 		pmpro_setMessage( __( 'Your password must not contain your username.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
+	*/
 
 	// Check for lowercase
+	/*
 	if ( ! preg_match( '/[a-z]/', $password ) ) {
 		pmpro_setMessage( __( 'Your password must contain at least 1 lowercase letter.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
+	*/
 
 	// Check for uppercase
+	/*
 	if ( ! preg_match( '/[A-Z]/', $password ) ) {
 		pmpro_setMessage( __( 'Your password must contain at least 1 uppercase letter.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
+	*/
 
 	// Check for numbers
 	if ( ! preg_match( '/[0-9]/', $password ) ) {
