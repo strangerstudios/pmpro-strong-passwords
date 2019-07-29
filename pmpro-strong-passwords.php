@@ -79,4 +79,4 @@ function pmprosp_pmpro_checkout_after_password()
 <p>Note: Your password must be at least 8 characters long and contain upper and lowercase letters, a number, and a special character.</p>
 <?php
 }
-add_filter("pmpro_checkout_after_password", "pmprosp_pmpro_checkout_after_password");
+add_filter( "pmpro_checkout_after_password", "pmprosp_pmpro_checkout_after_password", 1 );
