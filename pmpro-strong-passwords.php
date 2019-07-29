@@ -122,4 +122,4 @@ function pmprosp_pmpro_checkout_after_password()
 <?php
 }
 // load as early as possible in case there are uses of filter
-add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_password', 1, 1 );
+add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_password', 1 );

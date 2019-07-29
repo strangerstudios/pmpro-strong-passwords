@@ -1,17 +1,20 @@
 function checkPasswordStrength( 
 	$password_field_1,
     $password_field_2,
-	$strengthResult
+    $strengthResult,
+    $submitButton,
+    blacklistArray
 	 ) {
 
     var password_field_1 = $password_field_1.val();
     var password_field_2 = $password_field_2.val();
  
     // Reset the form & meter
+    $submitButton.attr( 'disabled', 'disabled' );
 	$strengthResult.removeClass( 'short bad good strong' );
  
     // Get the password strength
-    var strength = wp.passwordStrength.meter( password_field_1, password_field_2 );
+    var strength = wp.passwordStrength.meter( password_field_1, blacklistArray, password_field_2 );
  
     // Add the strength meter results
     switch ( strength ) {
@@ -53,7 +56,9 @@ jQuery( document ).ready( function( $ ) {
             checkPasswordStrength(
                 jQuery('input[name=password]'),         // First password field
                 jQuery('input[name=password2]'), // Second password field
-                jQuery('#password-strength')           // Strength meter
+                jQuery('#password-strength'),           // Strength meter
+                $('input[type=submit]'),           // Submit button
+                ['black', 'listed', 'word']        // Blacklisted words
             );
         }
     );
