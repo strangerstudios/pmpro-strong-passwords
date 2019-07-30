@@ -39,7 +39,7 @@ function pmprosp_password_strength_scripts_and_styles() {
 			'good'     => _x( 'Medium', 'password strength', 'pmpro-strong-passwords' ),
 			'strong'   => _x( 'Strong', 'password strength', 'pmpro-strong-passwords' ),
 			'mismatch' => _x( 'Mismatch', 'password strength', 'pmpro-strong-passwords' ),
-			'allow_weak' => apply_filters( 'pmprosp_allow_weak_passwords', false )
+			'allow_weak' => apply_filters( 'pmprosp_allow_weak_passwords', false ),
 		)
 	);
 }
