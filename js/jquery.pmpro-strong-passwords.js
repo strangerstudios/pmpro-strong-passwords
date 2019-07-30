@@ -1,3 +1,11 @@
+/*
+TODO: detect width of password field and set progressbar width same
+TODO: set pmprosp-progressbar-status box shadow width to larger than progressbar
+TODO: Add additional checks for upper & lowercase, numbers and special characters and combine with strength check
+TODO: Filter in blacklist array
+
+*/
+
 function checkPasswordStrength( 
 	$password_field_1,
     $password_field_2,
