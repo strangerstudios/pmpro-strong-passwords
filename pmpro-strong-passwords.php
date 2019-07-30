@@ -23,7 +23,7 @@ add_action( 'init', 'pmprosp_load_plugin_text_domain' );
 function pmprosp_password_strength_scripts_and_styles() {
 	global $pmpro_pages;
 	// Only load on checkout page
-	if ( is_page( $pmpro_pages['checkout'] ) ) {
+	if ( is_page( $pmpro_pages['checkout'] ) && ! is_user_logged_in() ) {
 		wp_enqueue_script( 'password-strength-meter' );
 		wp_enqueue_script( 'pmprosp-js', plugins_url( 'js/jquery.pmpro-strong-passwords.js', __FILE__ ), array( 'jquery' ), false, true  );
 		wp_enqueue_style( 'pmprosp-css', plugins_url( 'css/pmpro-strong-passwords.css', __FILE__ ) );
