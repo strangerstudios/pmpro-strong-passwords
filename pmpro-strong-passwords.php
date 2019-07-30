@@ -21,7 +21,6 @@ function pmprosp_load_plugin_text_domain() {
 add_action( 'init', 'pmprosp_load_plugin_text_domain' );
 
 function pmprosp_password_strength_scripts_and_styles() {
-
 	global $pmpro_pages;
 	// Only load on checkout page
 	if ( is_page( $pmpro_pages['checkout'] ) ) {
@@ -75,7 +74,6 @@ function pmpro_strong_password_check( $pmpro_continue_registration )
 		pmpro_setMessage( __( 'Your password must not match your username.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
-
 
 	// Check for containing username
 	if ( strpos( $password, $username ) !== false ) {
