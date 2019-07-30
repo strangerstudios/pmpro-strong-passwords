@@ -114,7 +114,7 @@ function pmpro_strong_password_check( $pmpro_continue_registration )
 function pmprosp_pmpro_checkout_after_password() {
 ?>
 <div id="pmprosp-container">
-	<span id="pmpro-password-strength"></span>
+	<p><small><?php _e( 'Password strength', 'pmpro-strong-passwords' ); ?>: <span id="pmpro-password-strength"></span></small></p>
 	<p><?php _e( 'Note: Your password must be at least 8 characters long and contain upper and lowercase letters, a number, and a special character.', 'pmpro-strong-passwords' ) ?></p>
 </div>
 <?php
