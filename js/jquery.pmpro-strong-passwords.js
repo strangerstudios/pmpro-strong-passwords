@@ -11,7 +11,7 @@ function checkPasswordStrength(
  
     // Reset the form & meter
     $submitButton.attr( 'disabled', true );
-	  $strengthResult.removeClass( 'short bad good strong' );
+	$strengthResult.removeClass( 'short bad good strong' );
  
     // Get the password strength
     var strength = wp.passwordStrength.meter( password_field_1, blacklistArray, password_field_2 );
