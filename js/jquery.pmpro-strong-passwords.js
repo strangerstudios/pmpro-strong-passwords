@@ -1,9 +1,13 @@
 /*
 TODO: detect width of password field and set progressbar width same
 TODO: set pmprosp-progressbar-status box shadow width to larger than progressbar
-TODO: Add additional checks for upper & lowercase, numbers and special characters and combine with strength check
+? TODO: Add additional checks for upper & lowercase, numbers and special characters and combine with strength check
 TODO: Filter in blacklist array
-
+TODO: Mismatch styling?
+?: Hide and autofill confirm password field?
+?: Add toggle show password?
+?: Generate Password + button?
+?: Auto Generate PW and show?
 */
 
 function checkPasswordStrength( 
