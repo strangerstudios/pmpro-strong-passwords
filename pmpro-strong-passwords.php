@@ -114,7 +114,7 @@ function pmprosp_pmpro_checkout_after_password() {
 	?>
 	<div id="pmprosp-container">
 		<div class="progressBar"><span class="progressBarStatus"></span></div>
-		<p><small><?php _e( 'Password strength', 'pmpro-strong-passwords' ); ?>: <span id="pmpro-password-strength"></span></small></p>
+		<p><small><?php _e( 'Password strength', 'pmpro-strong-passwords' ); ?>: <span id="pmprosp-password-strength"></span></small></p>
 		<p id="pmprosp-note"><?php _e( 'Note: Your password must be at least 8 characters long and contain upper and lowercase letters, a number, and a special character.', 'pmpro-strong-passwords' ) ?></p>
 	</div>
 	<?php

@@ -67,10 +67,10 @@ jQuery( document ).ready( function( $ ) {
     jQuery( 'body' ).on( 'keyup', 'input[name=password], input[name=password2]',
         function( event ) {
             checkPasswordStrength(
-                jQuery('input[name=password]'),         // First password field
-                jQuery('input[name=password2]'), // Second password field
-                jQuery('#pmpro-password-strength'),           // Strength meter
-                jQuery('#pmpro_btn-submit'),           // Submit button
+                jQuery('.pmpro_form input[name=password]'),         // First password field
+                jQuery('.pmpro_form input[name=password2]'), // Second password field
+                jQuery('.pmpro_form #pmprosp-password-strength'),           // Strength meter
+                jQuery('.pmpro_form #pmpro_btn-submit'),           // Submit button
                 ['black', 'listed', 'word']        // Blacklisted words
             );
         }
