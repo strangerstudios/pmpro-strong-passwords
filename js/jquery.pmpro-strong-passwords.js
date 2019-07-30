@@ -20,27 +20,27 @@ function checkPasswordStrength(
     switch ( strength ) {
         case 2:
             $strengthResult.addClass( 'bad' ).html( pwsL10n.bad );
-            jQuery(".progressBarStatus").css("width", 30 + "%");
+            jQuery(".pmprosp-progressbar-status").css("width", 50 + "%");
             break;
 
         case 3:
             $strengthResult.addClass( 'good' ).html( pwsL10n.good );
-            jQuery(".progressBarStatus").css("width", 70 + "%");
+            jQuery(".pmprosp-progressbar-status").css("width", 70 + "%");
             break;
  
         case 4:
             $strengthResult.addClass( 'strong' ).html( pwsL10n.strong );
-            jQuery(".progressBarStatus").css("width", 100 + "%");
+            jQuery(".pmprosp-progressbar-status").css("width", 100 + "%");
             break;
  
         case 5:
             $strengthResult.addClass( 'short' ).html( pwsL10n.mismatch );
-            jQuery(".progressBarStatus").css("width", 50 + "%");
+            jQuery(".pmprosp-progressbar-status").css("width", 20 + "%");
             break;
  
         default:
             $strengthResult.addClass( 'short' ).html( pwsL10n.short );
-            jQuery(".progressBarStatus").css("width", 50 + "%");
+            jQuery(".pmprosp-progressbar-status").css("width", 20 + "%");
  
     }
  
