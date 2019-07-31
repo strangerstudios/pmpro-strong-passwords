@@ -21,14 +21,13 @@ function pmprosp_load_plugin_text_domain() {
 add_action( 'init', 'pmprosp_load_plugin_text_domain' );
 
 // set filters
-
 $pmprosp_display_progressbar       = apply_filters( 'pmprosp_display_progressbar', true );
 $pmprosp_display_password_strength = apply_filters( 'pmprosp_display_password_strength', true );
 $pmprosp_display_password_note     = apply_filters( 'pmprosp_display_password_note', true );
-$pmprosp_password_blacklist        = apply_filters( 'pmprosp_password_blacklist', array( 'black', 'listed', 'word' ) );
+$pmprosp_password_blacklist        = apply_filters( 'pmprosp_password_blacklist', $pmprosp_password_blacklist );
 
 function pmprosp_password_strength_scripts_and_styles() {
-	global $pmpro_pages;
+	global $pmpro_pages, $pmprosp_password_blacklist;
 	// Only load on checkout page
 	if ( is_page( $pmpro_pages['checkout'] ) && ! is_user_logged_in() ) {
 		wp_enqueue_script( 'password-strength-meter' );
@@ -47,10 +46,10 @@ function pmprosp_password_strength_scripts_and_styles() {
 			'strong'   => _x( 'Strong', 'password strength', 'pmpro-strong-passwords' ),
 			'mismatch' => _x( 'Mismatch', 'password strength', 'pmpro-strong-passwords' ),
 			'allow_weak' => apply_filters( 'pmprosp_allow_weak_passwords', false ),
-			'display_progressbar' => $pmprosp_display_progressbar,
-			'display_password_strength' => $pmprosp_display_password_strength,
-			'display_password_note' => $pmprosp_display_password_note,
-			'password_blacklist' => $pmprosp_password_blacklist,
+			'display_progressbar' => intval( $pmprosp_display_progressbar ),
+			'display_password_strength' => intval( $pmprosp_display_password_strength ),
+			'display_password_note' => intval( $pmprosp_display_password_note ),
+			'password_blacklist' => json_encode( $pmprosp_password_blacklist ),
 		)
 	);
 }
@@ -126,7 +125,13 @@ function pmprosp_pmpro_checkout_after_password() {
 	<div id="pmprosp-container">
 		<div class="pmprosp-progressbar"><span class="pmprosp-progressbar-status"></span></div>
 		<p><small><?php _e( 'Password strength', 'pmpro-strong-passwords' ); ?>: <span id="pmprosp-password-strength"></span></small></p>
+		<?php
+		if( $pmprosp_display_password_note ) {
+		?>
 		<p id="pmprosp-note"><?php _e( 'Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character', 'pmpro-strong-passwords' ) ?></p>
+		<?php 
+		}
+		?>
 	</div>
 	<?php
 }

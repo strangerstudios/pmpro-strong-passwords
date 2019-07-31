@@ -10,7 +10,10 @@ TODO: Mismatch styling?
 ?: Generate Password + button?
 ?: Auto Generate PW and show?
 */
-console.log('pwsL10n :', pwsL10n);
+// console.log('pwsL10n :', pwsL10n);
+// console.log('pwsL10n.password_blacklist :', pwsL10n.password_blacklist);
+var pmprosp_password_blacklist = JSON.parse(pwsL10n.password_blacklist);
+// console.log('bpw :', bpw);
 
 function checkPasswordStrength( 
 	$password_field_1,
@@ -19,7 +22,6 @@ function checkPasswordStrength(
     $submitButton,
     blacklistArray
 	 ) {
-         console.log('pwsL10n.allow_weak :', pwsL10n.allow_weak);
 
     var password_field_1 = $password_field_1.val();
     var password_field_2 = $password_field_2.val();
@@ -86,7 +88,7 @@ jQuery( document ).ready( function( $ ) {
                 jQuery('.pmpro_form input[name=password2]'), // Second password field
                 jQuery('.pmpro_form #pmprosp-password-strength'),           // Strength meter
                 jQuery('.pmpro_form #pmpro_btn-submit'),           // Submit button
-                ['black', 'listed', 'word']        // Blacklisted words
+                pmprosp_password_blacklist        // Blacklisted words
             );
         }
     );
