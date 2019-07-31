@@ -20,6 +20,13 @@ function pmprosp_load_plugin_text_domain() {
 }
 add_action( 'init', 'pmprosp_load_plugin_text_domain' );
 
+// set filters
+
+$pmprosp_display_progressbar       = apply_filters( 'pmprosp_display_progressbar', true );
+$pmprosp_display_password_strength = apply_filters( 'pmprosp_display_password_strength', true );
+$pmprosp_display_password_note     = apply_filters( 'pmprosp_display_password_note', true );
+$pmprosp_password_blacklist        = apply_filters( 'pmprosp_password_blacklist', array( 'black', 'listed', 'word' ) );
+
 function pmprosp_password_strength_scripts_and_styles() {
 	global $pmpro_pages;
 	// Only load on checkout page
@@ -40,6 +47,10 @@ function pmprosp_password_strength_scripts_and_styles() {
 			'strong'   => _x( 'Strong', 'password strength', 'pmpro-strong-passwords' ),
 			'mismatch' => _x( 'Mismatch', 'password strength', 'pmpro-strong-passwords' ),
 			'allow_weak' => apply_filters( 'pmprosp_allow_weak_passwords', false ),
+			'display_progressbar' => $pmprosp_display_progressbar,
+			'display_password_strength' => $pmprosp_display_password_strength,
+			'display_password_note' => $pmprosp_display_password_note,
+			'password_blacklist' => $pmprosp_password_blacklist,
 		)
 	);
 }

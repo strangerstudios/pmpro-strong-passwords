@@ -10,6 +10,7 @@ TODO: Mismatch styling?
 ?: Generate Password + button?
 ?: Auto Generate PW and show?
 */
+console.log('pwsL10n :', pwsL10n);
 
 function checkPasswordStrength( 
 	$password_field_1,
@@ -18,6 +19,7 @@ function checkPasswordStrength(
     $submitButton,
     blacklistArray
 	 ) {
+         console.log('pwsL10n.allow_weak :', pwsL10n.allow_weak);
 
     var password_field_1 = $password_field_1.val();
     var password_field_2 = $password_field_2.val();
