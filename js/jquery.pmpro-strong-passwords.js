@@ -1,19 +1,18 @@
 /*
-TODO: Allow Weak filter
+// TODO: Allow Weak filter
 TODO: detect width of password field and set progressbar width same
 TODO: set pmprosp-progressbar-status box shadow width to larger than progressbar
+TODO: Add password note as tooltip
 ? TODO: Add additional checks for upper & lowercase, numbers and special characters and combine with strength check
-TODO: Filter in blacklist array
-TODO: Mismatch styling?
+// TODO: Filter in blacklist array
+?: Mismatch styling?
 ?: Hide and autofill confirm password field?
 ?: Add toggle show password?
 ?: Generate Password + button?
 ?: Auto Generate PW and show?
 */
-// console.log('pwsL10n :', pwsL10n);
-// console.log('pwsL10n.password_blacklist :', pwsL10n.password_blacklist);
+
 var pmprosp_password_blacklist = JSON.parse(pwsL10n.password_blacklist);
-// console.log('bpw :', bpw);
 
 function checkPasswordStrength( 
 	$password_field_1,
@@ -76,6 +75,7 @@ jQuery( document ).ready( function( $ ) {
 
     // Move the message and bar to just below the PMPro password 1 field.
     jQuery('#pmprosp-container').insertAfter('.pmpro_checkout-field-password');
+    jQuery('.pmpro_checkout-field-password label').append('<span id="pmprosp-password-strength">hello</span>');
 
     // add disabled attribute to submit button on page load.
     jQuery('#pmpro_btn-submit').attr('disabled', true);
