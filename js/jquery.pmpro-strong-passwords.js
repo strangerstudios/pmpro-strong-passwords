@@ -1,8 +1,9 @@
 /*
 // TODO: Allow Weak filter
-TODO: detect width of password field and set progressbar width same
-TODO: set pmprosp-progressbar-status box shadow width to larger than progressbar
+// TODO: detect width of password field and set progressbar width same
+// TODO: set pmprosp-progressbar-status box shadow width to larger than progressbar
 // TODO: Add password note as tooltip
+TODO: On screen resize adjust progressbar + box-shadow widths 
 ? Add additional checks for upper & lowercase, numbers and special characters and combine with strength check
 // TODO: Filter in blacklist array
 ?: Mismatch styling?
