@@ -12,7 +12,10 @@ TODO: Add password note as tooltip
 ?: Auto Generate PW and show?
 */
 
+console.log('pwsL10n :', pwsL10n);
+
 var pmprosp_password_blacklist = JSON.parse(pwsL10n.password_blacklist);
+// console.log('pmprosp_password_blacklist :', pmprosp_password_blacklist);
 
 function checkPasswordStrength( 
 	$password_field_1,
@@ -75,8 +78,21 @@ jQuery( document ).ready( function( $ ) {
 
     // Move the message and bar to just below the PMPro password 1 field.
     jQuery('#pmprosp-container').insertAfter('.pmpro_checkout-field-password');
-    jQuery('.pmpro_checkout-field-password label').append('<span class="pmprosp-tooltip__password" data-tooltip-location="right" data-tooltip="' + pwsL10n.password_tooltip + 'hello">?</span>');
-    jQuery('.pmpro_checkout-field-password label').append('<span id="pmprosp-password-strength"></span>');
+
+    // Show strength progressbar depending on filter
+    if ( pwsL10n.display_progressbar ) {
+        jQuery('#pmprosp-container').append('<div class="pmprosp-progressbar"><span class="pmprosp-progressbar-status"></span></div>');
+    }
+
+    // Show password tooltip depending on filter
+    if ( pwsL10n.display_password_tooltip ) {
+        jQuery('.pmpro_checkout-field-password label').append('<span class="pmprosp-tooltip__password" data-tooltip-location="right" data-tooltip="' + pwsL10n.password_tooltip + '">?</span>');
+    }
+    
+    // Show password strength pill depending on filter
+    if ( pwsL10n.display_password_strength ) {
+        jQuery('.pmpro_checkout-field-password label').append('<span id="pmprosp-password-strength"></span>');
+    }
 
     // add disabled attribute to submit button on page load.
     jQuery('#pmpro_btn-submit').attr('disabled', true);

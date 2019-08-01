@@ -22,9 +22,9 @@ add_action( 'init', 'pmprosp_load_plugin_text_domain' );
 
 // set filters
 $pmprosp_display_progressbar       = apply_filters( 'pmprosp_display_progressbar', true );
-$pmprosp_display_password_strength = apply_filters( 'pmprosp_display_password_strength', true );
-$pmprosp_display_password_tooltip  = apply_filters( 'pmprosp_display_password_tooltip', true );
-$pmprosp_password_blacklist        = apply_filters( 'pmprosp_password_blacklist', $pmprosp_password_blacklist );
+
+// Default password blacklist
+$pmprosp_password_blacklist = array( 'administrator', '@dministrator', '@dmin', 'test', 'tester' );
 
 function pmprosp_password_strength_scripts_and_styles() {
 	global $pmpro_pages, $pmprosp_password_blacklist;
@@ -47,10 +47,10 @@ function pmprosp_password_strength_scripts_and_styles() {
 			'mismatch' => _x( 'Mismatch', 'password strength', 'pmpro-strong-passwords' ),
 			'password_tooltip' => _x( 'Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character', 'password tooltip', 'pmpro-strong-passwords' ),
 			'allow_weak' => apply_filters( 'pmprosp_allow_weak_passwords', false ),
-			'display_progressbar' => intval( $pmprosp_display_progressbar ),
-			'display_password_strength' => intval( $pmprosp_display_password_strength ),
-			'display_password_tooltip' => intval( $pmprosp_display_password_tooltip ),
-			'password_blacklist' => json_encode( $pmprosp_password_blacklist ),
+			'display_progressbar' => apply_filters( 'pmprosp_display_progressbar', true ),
+			'display_password_strength' => apply_filters( 'pmprosp_display_password_strength', true ),
+			'display_password_tooltip' => apply_filters( 'pmprosp_display_password_tooltip', true ),
+			'password_blacklist' => json_encode( apply_filters( 'pmprosp_password_blacklist', $pmprosp_password_blacklist ) ),
 		)
 	);
 }
@@ -124,10 +124,7 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 function pmprosp_pmpro_checkout_after_password() {
 	?>
 	<div id="pmprosp-container">
-	<!-- <span class="pmprosp-tooltip__password" data-tooltip-location="right" data-tooltip="<?php _e( 'Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character', 'pmpro-strong-passwords' ) ?>">?</span> -->
-	<div class="pmprosp-progressbar"><span class="pmprosp-progressbar-status"></span></div>
-	<!-- <p><span id="pmprosp-password-strength"></span></p> -->
-	<!-- <p id="pmprosp-note"><?php _e( 'Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character', 'pmpro-strong-passwords' ) ?></p> -->
+	<!-- <div class="pmprosp-progressbar"><span class="pmprosp-progressbar-status"></span></div> -->
 	</div>
 	<?php
 }
