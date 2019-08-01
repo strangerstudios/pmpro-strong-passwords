@@ -75,7 +75,8 @@ jQuery( document ).ready( function( $ ) {
 
     // Move the message and bar to just below the PMPro password 1 field.
     jQuery('#pmprosp-container').insertAfter('.pmpro_checkout-field-password');
-    jQuery('.pmpro_checkout-field-password label').append('<span id="pmprosp-password-strength">hello</span>');
+    jQuery('.pmpro_checkout-field-password label').append('<span class="pmprosp-tooltip__password" data-tooltip-location="right" data-tooltip="' + pwsL10n.password_tooltip + 'hello">?</span>');
+    jQuery('.pmpro_checkout-field-password label').append('<span id="pmprosp-password-strength"></span>');
 
     // add disabled attribute to submit button on page load.
     jQuery('#pmpro_btn-submit').attr('disabled', true);
