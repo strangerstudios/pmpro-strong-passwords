@@ -4,7 +4,7 @@ Plugin Name: PMPro Strong Passwords
 Version: 0.1
 Plugin URI: http://www.paidmembershipspro.com/add-ons/plugins-on-github/require-strong-passwords/
 Description: Force users to submit strong passwords.
-Version: .1
+Version: .2_alpha
 Author: Scott Sousa
 Author URI: http://slocumstudio.com
 Text Domain: pmpro-strong-passwords
