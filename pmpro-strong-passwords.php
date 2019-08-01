@@ -20,9 +20,6 @@ function pmprosp_load_plugin_text_domain() {
 }
 add_action( 'init', 'pmprosp_load_plugin_text_domain' );
 
-// set filters
-$pmprosp_display_progressbar       = apply_filters( 'pmprosp_display_progressbar', true );
-
 // Default password blacklist
 $pmprosp_password_blacklist = array( 'administrator', '@dministrator', '@dmin', 'test', 'tester' );
 
