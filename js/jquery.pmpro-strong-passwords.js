@@ -80,16 +80,40 @@ jQuery( document ).ready( function( $ ) {
     // Move the message and bar to just below the PMPro password 1 field.
     jQuery('#pmprosp-container').insertAfter('.pmpro_checkout-field-password');
 
+
     // Show strength progressbar depending on filter
     if ( pwsL10n.display_progressbar ) {
         
         jQuery('#pmprosp-container').append('<div class="pmprosp-progressbar"><span class="pmprosp-progressbar-status"></span></div>');
 
-        var pmpro_progressbar__width = Math.round( jQuery('.pmpro_form input[name=password]').outerWidth() );
-        jQuery( '.pmprosp-progressbar' ).css( 'width', pmpro_progressbar__width + 'px' );
+        function adjust_progressbar_width(){
 
-        var pmpro_progressbar__boxshadow_width = pmpro_progressbar__width + 20;
-        jQuery( '.pmprosp-progressbar-status' ).css( 'box-shadow', pmpro_progressbar__boxshadow_width + 'px 0 0 ' + pmpro_progressbar__boxshadow_width + 'px ' + pwsL10n.progressbar_bg_color );
+            var pmpro_progressbar__width = Math.round( jQuery('.pmpro_form input[name=password]').outerWidth() );
+            jQuery( '.pmprosp-progressbar' ).css( 'width', pmpro_progressbar__width + 'px' );
+    
+            var pmpro_progressbar__boxshadow_width = pmpro_progressbar__width + 20;
+            jQuery( '.pmprosp-progressbar-status' ).css( 'box-shadow', pmpro_progressbar__boxshadow_width + 'px 0 0 ' + pmpro_progressbar__boxshadow_width + 'px ' + pwsL10n.progressbar_bg_color );
+        }
+
+        adjust_progressbar_width();
+
+        // Set progressbar width to password field width
+        function resize_progressbar() {
+            adjust_progressbar_width();
+        };
+
+        // On window resize reset width when resize has finished (debounce)
+        var doit;
+        window.onresize = function(){
+        clearTimeout(doit);
+        doit = setTimeout(resize_progressbar, 100);
+        };
+
+        // var pmpro_progressbar__width = Math.round( jQuery('.pmpro_form input[name=password]').outerWidth() );
+        // jQuery( '.pmprosp-progressbar' ).css( 'width', pmpro_progressbar__width + 'px' );
+
+        // var pmpro_progressbar__boxshadow_width = pmpro_progressbar__width + 20;
+        // jQuery( '.pmprosp-progressbar-status' ).css( 'box-shadow', pmpro_progressbar__boxshadow_width + 'px 0 0 ' + pmpro_progressbar__boxshadow_width + 'px ' + pwsL10n.progressbar_bg_color );
     }
 
     // Show password tooltip depending on filter
