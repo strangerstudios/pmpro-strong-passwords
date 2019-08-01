@@ -81,7 +81,14 @@ jQuery( document ).ready( function( $ ) {
 
     // Show strength progressbar depending on filter
     if ( pwsL10n.display_progressbar ) {
+        
         jQuery('#pmprosp-container').append('<div class="pmprosp-progressbar"><span class="pmprosp-progressbar-status"></span></div>');
+
+        var pmpro_progressbar__width = Math.round( jQuery('.pmpro_form input[name=password]').outerWidth() );
+        jQuery( '.pmprosp-progressbar' ).css( 'width', pmpro_progressbar__width + 'px' );
+
+        var pmpro_progressbar__boxshadow_width = pmpro_progressbar__width + 20;
+        jQuery( '.pmprosp-progressbar-status' ).css( 'box-shadow', pmpro_progressbar__boxshadow_width + 'px 0 0 ' + pmpro_progressbar__boxshadow_width + 'px ' + pwsL10n.progressbar_bg_color );
     }
 
     // Show password tooltip depending on filter
