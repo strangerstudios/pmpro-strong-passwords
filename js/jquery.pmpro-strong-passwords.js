@@ -13,10 +13,8 @@
 ?: Auto Generate PW and show?
 */
 
-console.log('pwsL10n :', pwsL10n);
 
 var pmprosp_password_blacklist = JSON.parse(pwsL10n.password_blacklist);
-// console.log('pmprosp_password_blacklist :', pmprosp_password_blacklist);
 
 function checkPasswordStrength( 
 	$password_field_1,
@@ -61,7 +59,7 @@ function checkPasswordStrength(
         default:
             $strengthResult.addClass( 'short' ).html( pwsL10n.short );
             jQuery(".pmprosp-progressbar-status").css("width", 20 + "%");
- 
+
     }
  
     // The meter function returns a result even if password_field_2 is empty,
@@ -108,12 +106,6 @@ jQuery( document ).ready( function( $ ) {
         clearTimeout(doit);
         doit = setTimeout(resize_progressbar, 100);
         };
-
-        // var pmpro_progressbar__width = Math.round( jQuery('.pmpro_form input[name=password]').outerWidth() );
-        // jQuery( '.pmprosp-progressbar' ).css( 'width', pmpro_progressbar__width + 'px' );
-
-        // var pmpro_progressbar__boxshadow_width = pmpro_progressbar__width + 20;
-        // jQuery( '.pmprosp-progressbar-status' ).css( 'box-shadow', pmpro_progressbar__boxshadow_width + 'px 0 0 ' + pmpro_progressbar__boxshadow_width + 'px ' + pwsL10n.progressbar_bg_color );
     }
 
     // Show password tooltip depending on filter
