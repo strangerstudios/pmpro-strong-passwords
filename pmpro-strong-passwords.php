@@ -73,25 +73,25 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 
 	// Check for length (8 characters)
 	if ( strlen( $password ) < 8 ) {
-		pmpro_setMessage( __( 'Your password must be at least 8 characters long.', 'pmpro-strong-passwords' ), 'pmpro_error' );
+		pmpro_setMessage( esc_html__( 'Your password must be at least 8 characters long.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
 	// Check for username match	
 	if ( $password == $username ) {
-		pmpro_setMessage( __( 'Your password must not match your username.', 'pmpro-strong-passwords' ), 'pmpro_error' );
+		pmpro_setMessage( esc_html__( 'Your password must not match your username.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
 	// Check for containing username
 	if ( strpos( $password, $username ) !== false ) {
-		pmpro_setMessage( __( 'Your password must not contain your username.', 'pmpro-strong-passwords' ), 'pmpro_error' );
+		pmpro_setMessage( esc_html__( 'Your password must not contain your username.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
 	// Check for lowercase
 	if ( ! preg_match( '/[a-z]/', $password ) ) {
-		pmpro_setMessage( __( 'Your password must contain at least 1 lowercase letter.', 'pmpro-strong-passwords' ), 'pmpro_error' );
+		pmpro_setMessage( esc_html__( 'Your password must contain at least 1 lowercase letter.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
@@ -103,13 +103,13 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 
 	// Check for numbers
 	if ( ! preg_match( '/[0-9]/', $password ) ) {
-		pmpro_setMessage( __( 'Your password must contain at least 1 number.', 'pmpro-strong-passwords' ), 'pmpro_error' );
+		pmpro_setMessage( esc_html__( 'Your password must contain at least 1 number.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
 	// Check for special characters
 	if ( ! preg_match( '/[\W]/', $password ) ) {
-		pmpro_setMessage( __( 'Your password must contain at least 1 special character.', 'pmpro-strong-passwords' ), 'pmpro_error' );
+		pmpro_setMessage( esc_html__( 'Your password must contain at least 1 special character.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
