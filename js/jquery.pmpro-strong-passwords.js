@@ -61,6 +61,12 @@ function checkPasswordStrength(
             jQuery(".pmprosp-progressbar-status").css("width", 20 + "%");
 
     }
+
+     // hide the password strength.
+     if ( password_field_1 === '' ) {
+        $strengthResult.removeClass( 'short bad good strong' );
+        jQuery(".pmprosp-progressbar-status").css("width", 0 + "%");
+    }
  
     // The meter function returns a result even if password_field_2 is empty,
     // enable only the submit button if the password is strong and
