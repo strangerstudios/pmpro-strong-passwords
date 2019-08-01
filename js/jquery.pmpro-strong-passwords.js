@@ -17,19 +17,19 @@
 var pmprosp_password_blacklist = JSON.parse(pwsL10n.password_blacklist);
 
 function checkPasswordStrength( 
-	$password_field_1,
-    $password_field_2,
-    $strengthResult,
-    $submitButton,
+	password_field_1,
+    password_field_2,
+    strength_result,
+    submit_button,
     blacklistArray
 	 ) {
 
-    var password_field_1 = $password_field_1.val();
-    var password_field_2 = $password_field_2.val();
+    var password_field_1 = password_field_1.val();
+    var password_field_2 = password_field_2.val();
  
     // Reset the form & meter
-    $submitButton.attr( 'disabled', true );
-	$strengthResult.removeClass( 'short bad good strong' );
+    submit_button.attr( 'disabled', true );
+	strength_result.removeClass( 'short bad good strong' );
  
     // Get the password strength
     var strength = wp.passwordStrength.meter( password_field_1, blacklistArray, password_field_2 );
@@ -37,34 +37,34 @@ function checkPasswordStrength(
     // Add the strength meter results
     switch ( strength ) {
         case 2:
-            $strengthResult.addClass( 'bad' ).html( pwsL10n.bad );
+            strength_result.addClass( 'bad' ).html( pwsL10n.bad );
             jQuery(".pmprosp-progressbar-status").css("width", 50 + "%");
             break;
 
         case 3:
-            $strengthResult.addClass( 'good' ).html( pwsL10n.good );
+            strength_result.addClass( 'good' ).html( pwsL10n.good );
             jQuery(".pmprosp-progressbar-status").css("width", 70 + "%");
             break;
  
         case 4:
-            $strengthResult.addClass( 'strong' ).html( pwsL10n.strong );
+            strength_result.addClass( 'strong' ).html( pwsL10n.strong );
             jQuery(".pmprosp-progressbar-status").css("width", 100 + "%");
             break;
  
         case 5:
-            $strengthResult.addClass( 'short' ).html( pwsL10n.mismatch );
+            strength_result.addClass( 'short' ).html( pwsL10n.mismatch );
             jQuery(".pmprosp-progressbar-status").css("width", 20 + "%");
             break;
  
         default:
-            $strengthResult.addClass( 'short' ).html( pwsL10n.short );
+            strength_result.addClass( 'short' ).html( pwsL10n.short );
             jQuery(".pmprosp-progressbar-status").css("width", 20 + "%");
 
     }
 
      // hide the password strength.
      if ( password_field_1 === '' ) {
-        $strengthResult.removeClass( 'short bad good strong' );
+        strength_result.removeClass( 'short bad good strong' );
         jQuery(".pmprosp-progressbar-status").css("width", 0 + "%");
     }
  
@@ -72,9 +72,9 @@ function checkPasswordStrength(
     // enable only the submit button if the password is strong and
     // both passwords are filled up
     if ( pwsL10n.allow_weak == 1 && '' !== password_field_2.trim() && 5 != strength ) {
-        $submitButton.removeAttr( 'disabled' );
+        submit_button.removeAttr( 'disabled' );
     } else if ( 4 == strength && '' !== password_field_2.trim() ) {
-        $submitButton.removeAttr( 'disabled' );
+        submit_button.removeAttr( 'disabled' );
     }
     return strength;
 }
