@@ -1,12 +1,11 @@
 <?php
 /*
 Plugin Name: PMPro Strong Passwords
-Version: 0.1
-Plugin URI: http://www.paidmembershipspro.com/add-ons/plugins-on-github/require-strong-passwords/
-Description: Force users to submit strong passwords.
-Version: .2_alpha
-Author: Scott Sousa
-Author URI: http://slocumstudio.com
+Version: 0.2
+Plugin URI: https://www.paidmembershipspro.com/add-ons/require-strong-passwords/
+Description: Force users to submit strong passwords on checkout.
+Author: Stranger Studios
+Author URI: https://www.paidmembershipspro.com
 Text Domain: pmpro-strong-passwords
 Domain Path: /languages
 */
@@ -126,3 +125,18 @@ function pmprosp_pmpro_checkout_after_password() {
 }
 // load as early as possible in case there are uses of filter
 add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_password', 1 );
+
+/**
+ * Add links to the plugin row meta
+ */
+function pmprosp_plugin_row_meta( $links, $file ) {
+	if ( strpos( $file, 'pmpro-strong-passwords.php' ) !== false ) {
+		$new_links = array(
+			'<a href="' . esc_url( apply_filters( 'pmpro_docs_url', 'https://paidmembershipspro.com/documentation/' ) ) . '" title="' . esc_attr( __( 'View PMPro Documentation', 'paid-memberships-pro' ) ) . '">' . __( 'Docs', 'paid-memberships-pro' ) . '</a>',
+			'<a href="' . esc_url( apply_filters( 'pmpro_support_url', 'https://paidmembershipspro.com/support/' ) ) . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'paid-memberships-pro' ) ) . '">' . __( 'Support', 'paid-memberships-pro' ) . '</a>',
+		);
+		$links = array_merge( $links, $new_links );
+	}
+	return $links;
+}
+add_filter( 'plugin_row_meta', 'pmprosp_plugin_row_meta', 10, 2 );
