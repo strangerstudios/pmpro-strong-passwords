@@ -26,6 +26,9 @@ function checkPasswordStrength(
 
     var password_field_1 = password_field_1.val();
     var password_field_2 = password_field_2.val();
+    if ( undefined === password_field_2 ) {
+        password_field_2 = password_field_1;
+    }
  
     // Reset the form & meter
     submit_button.attr( 'disabled', true );
