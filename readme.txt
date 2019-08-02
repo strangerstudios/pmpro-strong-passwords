@@ -1,5 +1,5 @@
 === PMPro Require Strong Passwords ===
-Contributors: strangerstudios
+Contributors: strangerstudios, scottsousa
 Tags: password,security,strong password
 Donate link: https://www.paidmembershipspro.com
 Requires at least: 4.7
