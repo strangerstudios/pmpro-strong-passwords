@@ -24,11 +24,12 @@ function checkPasswordStrength(
     blacklistArray
 	 ) {
 
-    var password_field_1 = password_field_1.val();
-    var password_field_2 = password_field_2.val();
-    if ( undefined === password_field_2 ) {
-        password_field_2 = password_field_1;
+    if ( undefined === password_field_2 || (password_field_2).is(":hidden") ) {
+        var password_field_2 = password_field_1.val();
+    } else {
+        var password_field_2 = password_field_2.val();
     }
+    var password_field_1 = password_field_1.val();
  
     // Reset the form & meter
     submit_button.attr( 'disabled', true );
