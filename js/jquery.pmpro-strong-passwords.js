@@ -1,21 +1,11 @@
-/*
-// TODO: Allow Weak filter
-// TODO: detect width of password field and set progressbar width same
-// TODO: set pmprosp-progressbar-status box shadow width to larger than progressbar
-// TODO: Add password note as tooltip
-// TODO: On screen resize adjust progressbar + box-shadow widths 
-? Add additional checks for upper & lowercase, numbers and special characters and combine with strength check
-// TODO: Filter in blacklist array
-?: Mismatch styling?
-// ?: Hide and autofill confirm password field?
-?: Add toggle show password?
-?: Generate Password + button?
-?: Auto Generate PW and show?
-*/
+/**
+ * PMPro Strong Passwords
+ */
 
-
+// Create an array from blacklist JSON
 var pmprosp_password_blacklist = JSON.parse(pwsL10n.password_blacklist);
 
+// Check strength of password using WordPress password strength meter
 function checkPasswordStrength( 
 	password_field_1,
     password_field_2,
@@ -90,8 +80,10 @@ jQuery( document ).ready( function( $ ) {
     // Show strength progressbar depending on filter
     if ( pwsL10n.display_progressbar ) {
         
+        // Add progressbar element to page
         jQuery('#pmprosp-container').append('<div class="pmprosp-progressbar"><span class="pmprosp-progressbar-status"></span></div>');
 
+        // Set progressbar width to match password field width
         function adjust_progressbar_width(){
 
             var pmpro_progressbar__width = Math.round( jQuery('.pmpro_form input[name=password]').outerWidth() );
@@ -100,7 +92,6 @@ jQuery( document ).ready( function( $ ) {
             var pmpro_progressbar__boxshadow_width = pmpro_progressbar__width + 20;
             jQuery( '.pmprosp-progressbar-status' ).css( 'box-shadow', pmpro_progressbar__boxshadow_width + 'px 0 0 ' + pmpro_progressbar__boxshadow_width + 'px ' + pwsL10n.progressbar_bg_color );
         }
-
         adjust_progressbar_width();
 
         // Set progressbar width to password field width
