@@ -95,10 +95,10 @@ jQuery( document ).ready( function( $ ) {
         adjust_progressbar_width();
 
         // On window resize reset width when resize has finished (debounce)
-        var doit;
+        var do_debounce;
         window.onresize = function(){
-        clearTimeout(doit);
-        doit = setTimeout(adjust_progressbar_width, 100);
+        clearTimeout(do_debounce);
+        do_debounce = setTimeout(adjust_progressbar_width, 100);
         };
     }
 
