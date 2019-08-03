@@ -24,19 +24,16 @@ function checkPasswordStrength(
     blacklistArray
 	 ) {
 
-    if ( undefined === password_field_2 || (password_field_2).is(":hidden") ) {
-        var password_field_2 = password_field_1.val();
-    } else {
-        var password_field_2 = password_field_2.val();
-    }
-    var password_field_1 = password_field_1.val();
+    // get values from password field object
+    var password_field_2_value = password_field_2.val();
+    var password_field_1_value = password_field_1.val();
  
     // Reset the form & meter
     submit_button.attr( 'disabled', true );
 	strength_result.removeClass( 'short bad good strong' );
  
     // Get the password strength
-    var strength = wp.passwordStrength.meter( password_field_1, blacklistArray, password_field_2 );
+    var strength = wp.passwordStrength.meter( password_field_1_value, blacklistArray, password_field_2_value );
  
     // Add the strength meter results
     switch ( strength ) {
@@ -67,7 +64,7 @@ function checkPasswordStrength(
     }
 
      // hide the password strength.
-     if ( password_field_1 === '' ) {
+     if ( password_field_1_value === '' ) {
         strength_result.removeClass( 'short bad good strong' );
         jQuery(".pmprosp-progressbar-status").css("width", 0 + "%");
     }
@@ -75,9 +72,10 @@ function checkPasswordStrength(
     // The meter function returns a result even if password_field_2 is empty,
     // enable only the submit button if the password is strong and
     // both passwords are filled up
-    if ( pwsL10n.allow_weak == 1 && '' !== password_field_2.trim() && 5 != strength ) {
+
+    if ( pwsL10n.allow_weak == 1 && '' !== password_field_2_value.trim() && 5 != strength ) {
         submit_button.removeAttr( 'disabled' );
-    } else if ( 4 == strength && '' !== password_field_2.trim() ) {
+    } else if ( 4 == strength && '' !== password_field_2_value.trim() ) {
         submit_button.removeAttr( 'disabled' );
     }
     return strength;
@@ -130,13 +128,22 @@ jQuery( document ).ready( function( $ ) {
 
     // add disabled attribute to submit button on page load.
     jQuery('#pmpro_btn-submit').attr('disabled', true);
+
+    // create object
+    var password_field_1 = jQuery('.pmpro_form input[name=password]');
+    var password_field_2 = jQuery('.pmpro_form input[name=password2]');
+
+    // Check if confirm password field is available otherwise use password field
+    if ( undefined == password_field_2 || 1 != jQuery('.pmpro_form input[name=password2]').length || jQuery(password_field_2).is(":hidden") ) {
+        var password_field_2 = password_field_1;
+    }
     
     // Binding to trigger checkPasswordStrength
     jQuery( 'body' ).on( 'keyup', 'input[name=password], input[name=password2]',
         function( event ) {
             checkPasswordStrength(
-                jQuery('.pmpro_form input[name=password]'),         // First password field
-                jQuery('.pmpro_form input[name=password2]'), // Second password field
+                password_field_1,         // First password field
+                password_field_2,         // Second password field
                 jQuery('.pmpro_form #pmprosp-password-strength'),           // Strength meter
                 jQuery('.pmpro_form #pmpro_btn-submit'),           // Submit button
                 pmprosp_password_blacklist        // Blacklisted words
