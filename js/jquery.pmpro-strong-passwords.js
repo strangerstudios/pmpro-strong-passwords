@@ -73,7 +73,7 @@ function checkPasswordStrength(
  
 jQuery( document ).ready( function( $ ) {
 
-    // Move the message and bar to just below the PMPro password 1 field.
+    // Move the stong password container to just below the PMPro password 1 field.
     jQuery('#pmprosp-container').insertAfter('.pmpro_checkout-field-password');
 
 
@@ -86,9 +86,11 @@ jQuery( document ).ready( function( $ ) {
         // Set progressbar width to match password field width
         function adjust_progressbar_width(){
 
+            // Get width of password input field and set progressbar width
             var pmpro_progressbar__width = Math.round( jQuery('.pmpro_form input[name=password]').outerWidth() );
             jQuery( '.pmprosp-progressbar' ).css( 'width', pmpro_progressbar__width + 'px' );
-    
+
+            // box-shadow width must be greater than progressbar width
             var pmpro_progressbar__boxshadow_width = pmpro_progressbar__width + 20;
             jQuery( '.pmprosp-progressbar-status' ).css( 'box-shadow', pmpro_progressbar__boxshadow_width + 'px 0 0 ' + pmpro_progressbar__boxshadow_width + 'px ' + pwsL10n.progressbar_bg_color );
         }
@@ -115,7 +117,7 @@ jQuery( document ).ready( function( $ ) {
     // add disabled attribute to submit button on page load.
     jQuery('#pmpro_btn-submit').attr('disabled', true);
 
-    // create object
+    // create objects from password input fields
     var password_field_1 = jQuery('.pmpro_form input[name=password]');
     var password_field_2 = jQuery('.pmpro_form input[name=password2]');
 
