@@ -94,16 +94,11 @@ jQuery( document ).ready( function( $ ) {
         }
         adjust_progressbar_width();
 
-        // Set progressbar width to password field width
-        function resize_progressbar() {
-            adjust_progressbar_width();
-        };
-
         // On window resize reset width when resize has finished (debounce)
         var doit;
         window.onresize = function(){
         clearTimeout(doit);
-        doit = setTimeout(resize_progressbar, 100);
+        doit = setTimeout(adjust_progressbar_width, 100);
         };
     }
 
