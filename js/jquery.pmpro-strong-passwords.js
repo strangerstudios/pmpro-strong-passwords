@@ -7,7 +7,7 @@
 ? Add additional checks for upper & lowercase, numbers and special characters and combine with strength check
 // TODO: Filter in blacklist array
 ?: Mismatch styling?
-?: Hide and autofill confirm password field?
+// ?: Hide and autofill confirm password field?
 ?: Add toggle show password?
 ?: Generate Password + button?
 ?: Auto Generate PW and show?
