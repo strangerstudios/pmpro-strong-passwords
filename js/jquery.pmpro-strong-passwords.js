@@ -125,7 +125,17 @@ jQuery( document ).ready( function( $ ) {
     if ( undefined == password_field_2 || 1 != jQuery('.pmpro_form input[name=password2]').length || jQuery(password_field_2).is(":hidden") ) {
         var password_field_2 = password_field_1;
     }
-    
+
+    // If passwords were passed to the checkout form from another page check strength on load
+    setTimeout(function () {
+        checkPasswordStrength(password_field_1, // First password field
+        password_field_2, // Second password field
+        jQuery('.pmpro_form #pmprosp-password-strength'), // Strength meter
+        jQuery('.pmpro_form #pmpro_btn-submit'), // Submit button
+        pmprosp_password_blacklist // Blacklisted words
+        );
+      }, 500);
+
     // Binding to trigger checkPasswordStrength
     jQuery( 'body' ).on( 'keyup', 'input[name=password], input[name=password2]',
         function( event ) {
