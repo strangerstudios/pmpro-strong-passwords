@@ -5,7 +5,7 @@ Donate link: https://www.paidmembershipspro.com
 Requires at least: 4.7
 Tested up to: 5.2.2
 Requires PHP: 5.6
-Stable tag: trunk
+Stable tag: 0.2
 License: GPL 2.0
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
