@@ -10,7 +10,6 @@ function checkPasswordStrength(
 	password_field_1,
     password_field_2,
     strength_result,
-    submit_button,
     blacklistArray
 	 ) {
 
@@ -135,7 +134,6 @@ jQuery( document ).ready( function( $ ) {
         checkPasswordStrength(password_field_1, // First password field
         password_field_2, // Second password field
         jQuery('.pmpro_form #pmprosp-password-strength'), // Strength meter
-        jQuery('.pmpro_form #pmpro_btn-submit'), // Submit button
         pmprosp_password_blacklist // Blacklisted words
         );
       }, 500);
@@ -147,7 +145,6 @@ jQuery( document ).ready( function( $ ) {
                 password_field_1,         // First password field
                 password_field_2,         // Second password field
                 jQuery('.pmpro_form #pmprosp-password-strength'),           // Strength meter
-                jQuery('.pmpro_form #pmpro_btn-submit'),           // Submit button
                 pmprosp_password_blacklist        // Blacklisted words
             );
         }
