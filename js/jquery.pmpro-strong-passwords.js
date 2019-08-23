@@ -36,8 +36,6 @@ function checkPasswordStrength(
     }
 
 
-    // Todo: Match up password strength with custom checks.
-
         switch ( strength ) {
             case 2:
                 strength_result.addClass( 'bad' ).html( pwsL10n.bad );
@@ -50,8 +48,13 @@ function checkPasswordStrength(
                 break;
      
             case 4:
-                strength_result.addClass( 'strong' ).html( pwsL10n.strong );
-                jQuery(".pmprosp-progressbar-status").css("width", 100 + "%");
+                if ( pass_ok ) {
+                    strength_result.addClass( 'strong' ).html( pwsL10n.strong );
+                    jQuery(".pmprosp-progressbar-status").css("width", 100 + "%");
+                } else {
+                    strength_result.addClass( 'good' ).html( pwsL10n.good );
+                    jQuery(".pmprosp-progressbar-status").css("width", 70 + "%");
+                }
                 break;
      
             case 5:
@@ -63,6 +66,7 @@ function checkPasswordStrength(
                 strength_result.addClass( 'short' ).html( pwsL10n.short );
                 jQuery(".pmprosp-progressbar-status").css("width", 20 + "%");
         }
+       
     
 
      // hide the password strength.
