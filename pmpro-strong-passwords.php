@@ -19,8 +19,6 @@ function pmprosp_load_plugin_text_domain() {
 }
 add_action( 'init', 'pmprosp_load_plugin_text_domain' );
 
-// Default password blacklist
-
 function pmprosp_password_strength_scripts_and_styles() {
 	global $pmpro_pages, $post;
 
@@ -127,7 +125,7 @@ function pmprosp_pmpro_checkout_after_password() {
 	?>
 	<div id="pmprosp-container"></div>
 	<?php
-	echo "<small>Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character</small>";
+	echo '<small>' . __( 'Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character', 'pmpro-strong-passwords' ) . '</small>';
 }
 // load as early as possible in case there are uses of filter
 add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_password', 1 );
