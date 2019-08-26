@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: PMPro Strong Passwords
-Version: 0.2
+Version: 0.2.1
 Plugin URI: https://www.paidmembershipspro.com/add-ons/require-strong-passwords/
 Description: Force users to submit strong passwords on checkout.
 Author: Stranger Studios

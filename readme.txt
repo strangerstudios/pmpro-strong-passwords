@@ -5,7 +5,7 @@ Donate link: https://www.paidmembershipspro.com
 Requires at least: 4.7
 Tested up to: 5.2.2
 Requires PHP: 5.6
-Stable tag: 0.2
+Stable tag: 0.2.1
 License: GPL 2.0
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
@@ -25,6 +25,11 @@ Improve security on your WordPress membership site.
 Please post support topics to [https://www.paidmembershipspro.com](https://www.paidmembershipspro.com)
 
 == Changelog ==
+= 0.2.1 =
+* Bug Fix/Enhancement: Added in a hint under Confirm Password.
+* Enhancement: Add PHP check for password strength that was removed in 0.2.
+* Enhancement: Improved Javascript password checker. 
+
 = 0.2 =
 * Bug Fix/Enhancement: Adjust priority of \'pmpro_checkout_after_password\' filter to avoid conflicts with other Add Ons hooking in on this.
 * Enhancement: Using WordPress built-in password strength meter.
