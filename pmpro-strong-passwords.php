@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: PMPro Strong Passwords
-Version: 0.2
+Version: 0.2.1
 Plugin URI: https://www.paidmembershipspro.com/add-ons/require-strong-passwords/
 Description: Force users to submit strong passwords on checkout.
 Author: Stranger Studios
@@ -19,11 +19,8 @@ function pmprosp_load_plugin_text_domain() {
 }
 add_action( 'init', 'pmprosp_load_plugin_text_domain' );
 
-// Default password blacklist
-$pmprosp_password_blacklist = apply_filters( 'pmprosp_password_blocklist', array( 'admin', 'administrator', '@dministrator', '@dmin', 'test', 'tester' ) );
-
 function pmprosp_password_strength_scripts_and_styles() {
-	global $pmpro_pages, $pmprosp_password_blacklist, $post;
+	global $pmpro_pages, $post;
 
 	// Don't load this script at all if user is logged in.
 	if ( is_user_logged_in() ) {
@@ -53,7 +50,7 @@ function pmprosp_password_strength_scripts_and_styles() {
 			'display_progressbar' => apply_filters( 'pmprosp_display_progressbar', true ),
 			'display_password_strength' => apply_filters( 'pmprosp_display_password_strength', true ),
 			'display_password_tooltip' => apply_filters( 'pmprosp_display_password_tooltip', true ),
-			'password_blacklist' => json_encode( apply_filters( 'pmprosp_password_blacklist', $pmprosp_password_blacklist ) ),
+			'password_blacklist' => json_encode( apply_filters( 'pmprosp_password_blocklist', array( 'admin', 'administrator', '@dministrator', '@dmin', 'test', 'tester' ) ) ),
 		)
 	);
 }
@@ -122,12 +119,13 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 	return $pmpro_continue_registration;
 }
 // Leaving this logic here if user's want to bring this back int future versions.
-// add_filter( 'pmpro_registration_checks', 'pmpro_strong_password_check' );
+add_filter( 'pmpro_registration_checks', 'pmpro_strong_password_check' );
 
 function pmprosp_pmpro_checkout_after_password() {
 	?>
 	<div id="pmprosp-container"></div>
 	<?php
+	echo '<small>' . __( 'Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character', 'pmpro-strong-passwords' ) . '</small>';
 }
 // load as early as possible in case there are uses of filter
 add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_password', 1 );
