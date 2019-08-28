@@ -125,7 +125,7 @@ function pmprosp_pmpro_checkout_after_password() {
 	?>
 	<div id="pmprosp-container"></div>
 	<?php
-	echo '<small>' . esc_html_x( 'Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character', 'password note displayed below password field', 'pmpro-strong-passwords' ) . '</small>';
+	echo '<small id="pmprosp-password-notice">' . esc_html_x( 'Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character', 'password note displayed below password field', 'pmpro-strong-passwords' ) . '</small>';
 }
 // load as early as possible in case there are uses of filter
 add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_password', 1 );
