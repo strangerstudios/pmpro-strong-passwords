@@ -45,7 +45,6 @@ function pmprosp_password_strength_scripts_and_styles() {
 			'strong'   => _x( 'Strong', 'password strength', 'pmpro-strong-passwords' ),
 			'mismatch' => _x( 'Mismatch', 'password strength', 'pmpro-strong-passwords' ),
 			'password_tooltip' => _x( 'Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character', 'password tooltip displayed on hover over question mark next to password field label', 'pmpro-strong-passwords' ),
-			'allow_weak' => apply_filters( 'pmprosp_allow_weak_passwords', false ),
 			'progressbar_bg_color' => apply_filters( 'pmprosp_progressbar_bg_color', '#aaaaaa' ),
 			'display_progressbar' => apply_filters( 'pmprosp_display_progressbar', true ),
 			'display_password_strength' => apply_filters( 'pmprosp_display_password_strength', true ),
