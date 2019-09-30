@@ -64,7 +64,7 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 
 	// Don't load this script at all if user is logged in.
 	if ( is_user_logged_in() ) {
-		return;
+		return $pmpro_continue_registration;
 	}
 
 	//only bother checking if there are no errors so far
