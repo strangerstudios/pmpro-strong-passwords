@@ -61,6 +61,12 @@ add_action( 'wp_enqueue_scripts', 'pmprosp_password_strength_scripts_and_styles'
  * by checking for length, lowercase/uppercase, numbers, special characters, and matching username.
  */
 function pmpro_strong_password_check( $pmpro_continue_registration ) {
+
+	// Don't load this script at all if user is logged in.
+	if ( is_user_logged_in() ) {
+		return;
+	}
+
 	//only bother checking if there are no errors so far
 	if( ! $pmpro_continue_registration )
 		return $pmpro_continue_registration;
