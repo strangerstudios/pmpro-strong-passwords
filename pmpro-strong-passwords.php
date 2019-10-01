@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: PMPro Strong Passwords
-Version: 0.2.1
+Version: 0.2.2
 Plugin URI: https://www.paidmembershipspro.com/add-ons/require-strong-passwords/
 Description: Force users to submit strong passwords on checkout.
 Author: Stranger Studios
@@ -61,6 +61,12 @@ add_action( 'wp_enqueue_scripts', 'pmprosp_password_strength_scripts_and_styles'
  * by checking for length, lowercase/uppercase, numbers, special characters, and matching username.
  */
 function pmpro_strong_password_check( $pmpro_continue_registration ) {
+
+	// Don't load this script at all if user is logged in.
+	if ( is_user_logged_in() ) {
+		return $pmpro_continue_registration;
+	}
+
 	//only bother checking if there are no errors so far
 	if( ! $pmpro_continue_registration )
 		return $pmpro_continue_registration;
