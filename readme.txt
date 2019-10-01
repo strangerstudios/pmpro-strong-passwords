@@ -3,9 +3,9 @@ Contributors: strangerstudios, scottsousa
 Tags: password,security,strong password
 Donate link: https://www.paidmembershipspro.com
 Requires at least: 4.7
-Tested up to: 5.2.2
+Tested up to: 5.2.3
 Requires PHP: 5.6
-Stable tag: 0.2.1
+Stable tag: 0.2.2
 License: GPL 2.0
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
@@ -25,6 +25,9 @@ Improve security on your WordPress membership site.
 Please post support topics to [https://www.paidmembershipspro.com](https://www.paidmembershipspro.com)
 
 == Changelog ==
+= 0.2.2 =
+* Bug Fix: Remove warning for logged-in users. Skip logic for checking password.
+
 = 0.2.1 =
 * Bug Fix/Enhancement: Added in a hint under Confirm Password.
 * Enhancement: Add PHP check for password strength that was removed in 0.2.
@@ -42,5 +45,8 @@ Please post support topics to [https://www.paidmembershipspro.com](https://www.p
 * Initial commit
 
 == Upgrade Notice ==
+= 0.2.2 =
+Please upgrade to version 0.2.2 for minor bug fixes.
+
 = 0.2 =
-    Please upgrade to receive nifty new features and improved functionality with the default WordPress password strength calculator.
+Please upgrade to receive nifty new features and improved functionality with the default WordPress password strength calculator.
