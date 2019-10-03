@@ -26,7 +26,8 @@ function checkPasswordStrength(
 
    if ( password_field_1_value ) {
 
-       var reg = /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&!]).*$/
+        // var reg = /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[?`~_+-=.,!@#$%^&*();\/\\|<>"'\[\]{}]).*/
+        var reg = /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\/\]\[\\\^\$\.\|\?\*\+\(\){}\-_\`\'\",<>:&%#@!~;=]).*$/;
 
         //Check if password is 8 characters long with special characters, uppercase and letters.
         if ( jQuery('#username').val() != password_field_1_value && reg.test( password_field_1_value ) ) {
