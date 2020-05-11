@@ -6,7 +6,7 @@
 var pmprosp_password_blacklist = JSON.parse(pwsL10n.password_blacklist);
 
 // Check strength of password using WordPress password strength meter
-function checkPasswordStrength( 
+function checkPasswordStrength(
 	password_field_1,
     password_field_2,
     strength_result,
@@ -16,17 +16,17 @@ function checkPasswordStrength(
     // get values from password field object
     var password_field_2_value = password_field_2.val();
     var password_field_1_value = password_field_1.val();
- 
+
     // Reset the form & meter
 	strength_result.removeClass( 'short bad good strong' );
- 
+
     // Get the password strength
     var strength = wp.passwordStrength.meter( password_field_1_value, blacklistArray, password_field_2_value );
     var pass_ok = false;
 
    if ( password_field_1_value ) {
 
-       var reg = /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&!]).*$/
+        var reg = /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\/\]\[\\\^\$\.\|\?\*\+\(\){}\-_\`\'\",<>:&%#@!~;=€£¥]).*$/;
 
         //Check if password is 8 characters long with special characters, uppercase and letters.
         if ( jQuery('#username').val() != password_field_1_value && reg.test( password_field_1_value ) ) {
@@ -34,18 +34,17 @@ function checkPasswordStrength(
         }
     }
 
-
         switch ( strength ) {
             case 2:
                 strength_result.addClass( 'bad' ).html( pwsL10n.bad );
                 jQuery(".pmprosp-progressbar-status").css("width", 50 + "%");
                 break;
-    
+
             case 3:
                 strength_result.addClass( 'good' ).html( pwsL10n.good );
                 jQuery(".pmprosp-progressbar-status").css("width", 70 + "%");
                 break;
-     
+
             case 4:
                 if ( pass_ok ) {
                     strength_result.addClass( 'strong' ).html( pwsL10n.strong );
@@ -55,28 +54,26 @@ function checkPasswordStrength(
                     jQuery(".pmprosp-progressbar-status").css("width", 70 + "%");
                 }
                 break;
-     
+
             case 5:
                 strength_result.addClass( 'short' ).html( pwsL10n.mismatch );
                 jQuery(".pmprosp-progressbar-status").css("width", 20 + "%");
                 break;
-     
+
             default:
                 strength_result.addClass( 'short' ).html( pwsL10n.short );
                 jQuery(".pmprosp-progressbar-status").css("width", 20 + "%");
         }
-       
-    
 
      // hide the password strength.
      if ( password_field_1_value === '' ) {
         strength_result.removeClass( 'short bad good strong' );
         jQuery(".pmprosp-progressbar-status").css("width", 0 + "%");
     }
-    
+
     return strength;
 }
- 
+
 jQuery( document ).ready( function( $ ) {
 
     // Move the stong password container to just below the PMPro password 1 field.
@@ -85,7 +82,7 @@ jQuery( document ).ready( function( $ ) {
 
     // Show strength progressbar depending on filter
     if ( pwsL10n.display_progressbar ) {
-        
+
         // Add progressbar element to page
         jQuery('#pmprosp-container').append('<div class="pmprosp-progressbar"><span class="pmprosp-progressbar-status"></span></div>');
 
@@ -114,7 +111,7 @@ jQuery( document ).ready( function( $ ) {
     if ( pwsL10n.display_password_tooltip ) {
         jQuery('.pmpro_checkout-field-password label').append('<span class="pmprosp-tooltip__password" data-tooltip-location="right" data-tooltip="' + pwsL10n.password_tooltip + '">?</span>');
     }
-    
+
     // Show password strength pill depending on filter
     if ( pwsL10n.display_password_strength ) {
         jQuery('.pmpro_checkout-field-password label').append('<span id="pmprosp-password-strength"></span>');
