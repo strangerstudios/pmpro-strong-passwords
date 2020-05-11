@@ -28,7 +28,7 @@ function pmprosp_password_strength_scripts_and_styles() {
 	}
 
 	// Only load on certain PMPro pages.
-	if ( is_page( $pmpro_pages['checkout'] ) || strpos( $post->post_content, '[pmpro_signup' ) !== false ) {
+	if ( is_page( $pmpro_pages['checkout'] ) || ( isset( $post ) && strpos( $post->post_content, '[pmpro_signup' ) !== false ) ) {
 		wp_enqueue_script( 'password-strength-meter' );
 		wp_enqueue_script( 'pmprosp-js', plugins_url( 'js/jquery.pmpro-strong-passwords.js', __FILE__ ), array( 'jquery' ), false, true  );
 		wp_enqueue_style( 'pmprosp-css', plugins_url( 'css/pmpro-strong-passwords.css', __FILE__ ) );
