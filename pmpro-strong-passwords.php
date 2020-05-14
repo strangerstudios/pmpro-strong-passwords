@@ -10,6 +10,8 @@ Text Domain: pmpro-strong-passwords
 Domain Path: /languages
 */
 
+use ZxcvbnPhp\Zxcvbn;
+
 /**
  * Load text domain
  * pmprosp_load_plugin_text_domain
@@ -77,6 +79,29 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 	// no password (existing user is checking out)
 	if( empty( $password ) )
 		return $pmpro_continue_registration;
+
+	require_once plugin_dir_path( __FILE__ ).'vendor/autoload.php';
+
+	$zxcvbn = new Zxcvbn();
+
+	$verbose_validation = apply_filters( 'pmprosp_enable_verbose_password_validation', false );
+
+	if( $verbose_validation ){
+
+		$user_data = array(
+			$username,
+			$password
+		);
+
+		$password_strength = $zxcvbn->passwordStrength( $password, $user_data );
+	} else {
+		$password_strength = $zxcvbn->passwordStrength( $password );	
+	}
+	
+	if( isset( $password_strength['score'] ) && $password_strength['score'] <= apply_filters( 'pmprosp_minimum_password_score', 2, $password_strength ) ){
+		pmpro_setMessage( apply_filters( 'pmprosp_minimum_password_score_message', implode( " ", $password_strength['feedback']['suggestions'] ), $password_strength ), 'pmpro_error' );
+		return false;
+	}
 
 	// Check for length (8 characters)
 	if ( strlen( $password ) < 8 ) {
