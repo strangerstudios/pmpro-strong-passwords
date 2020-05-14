@@ -44,7 +44,7 @@ function pmprosp_password_strength_scripts_and_styles() {
 			'good'     => _x( 'Medium', 'password strength', 'pmpro-strong-passwords' ),
 			'strong'   => _x( 'Strong', 'password strength', 'pmpro-strong-passwords' ),
 			'mismatch' => _x( 'Mismatch', 'password strength', 'pmpro-strong-passwords' ),
-			'password_tooltip' => _x( 'Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character', 'password tooltip displayed on hover over question mark next to password field label', 'pmpro-strong-passwords' ),
+			'password_tooltip' => wp_get_password_hint(),
 			'progressbar_bg_color' => apply_filters( 'pmprosp_progressbar_bg_color', '#aaaaaa' ),
 			'display_progressbar' => apply_filters( 'pmprosp_display_progressbar', true ),
 			'display_password_strength' => apply_filters( 'pmprosp_display_password_strength', true ),
@@ -130,7 +130,7 @@ function pmprosp_pmpro_checkout_after_password() {
 	?>
 	<div id="pmprosp-container"></div>
 	<?php
-	echo '<small id="pmprosp-password-notice">' . esc_html_x( 'Note: A good password is at least 8 characters long and contain upper and lowercase letters, a number, and a special character', 'password note displayed below password field', 'pmpro-strong-passwords' ) . '</small>';
+	echo '<small id="pmprosp-password-notice">' . wp_get_password_hint() . '</small>';
 }
 // load as early as possible in case there are uses of filter
 add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_password', 1 );
