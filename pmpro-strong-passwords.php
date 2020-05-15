@@ -50,8 +50,7 @@ function pmprosp_password_strength_scripts_and_styles() {
 			'progressbar_bg_color' => apply_filters( 'pmprosp_progressbar_bg_color', '#aaaaaa' ),
 			'display_progressbar' => apply_filters( 'pmprosp_display_progressbar', true ),
 			'display_password_strength' => apply_filters( 'pmprosp_display_password_strength', true ),
-			'display_password_tooltip' => apply_filters( 'pmprosp_display_password_tooltip', true ),
-			'password_blacklist' => json_encode( apply_filters( 'pmprosp_password_blocklist', array( 'admin', 'administrator', '@dministrator', '@dmin', 'test', 'tester' ) ) ),
+			'display_password_tooltip' => apply_filters( 'pmprosp_display_password_tooltip', true )
 		)
 	);
 }
