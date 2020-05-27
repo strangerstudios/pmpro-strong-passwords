@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: PMPro Strong Passwords
-Version: 0.2.2
+Plugin Name: Paid Memberships Pro - Require Strong Passwords
+Version: 0.2.3
 Plugin URI: https://www.paidmembershipspro.com/add-ons/require-strong-passwords/
 Description: Force users to submit strong passwords on checkout.
 Author: Stranger Studios
@@ -15,7 +15,7 @@ Domain Path: /languages
  * pmprosp_load_plugin_text_domain
  */
 function pmprosp_load_plugin_text_domain() {
-	load_plugin_textdomain( 'pmpro-strong-passwords', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
+	load_plugin_textdomain( 'pmpro-strong-passwords', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 add_action( 'init', 'pmprosp_load_plugin_text_domain' );
 
@@ -84,7 +84,7 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 		return false;
 	}
 
-	// Check for username match	
+	// Check for username match
 	if ( $password == $username ) {
 		pmpro_setMessage( esc_html__( 'Your password must not match your username.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
