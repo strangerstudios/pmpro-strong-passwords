@@ -1,0 +1,6 @@
+# Items to ignore when downloading a zip
+
+composer.json
+composer.lock
+.gitattributes export-ignore
+.gitignore export-ignore
