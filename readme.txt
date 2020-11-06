@@ -3,8 +3,8 @@ Contributors: strangerstudios, scottsousa
 Tags: password,security,strong password
 Requires at least: 4.7
 Tested up to: 5.4.1
-Requires PHP: 5.6
-Stable tag: 0.3
+Requires PHP: 7.2
+Stable tag: 0.4
 License: GPL 2.0
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
@@ -24,6 +24,9 @@ Improve security on your WordPress membership site.
 Please post support topics to [https://www.paidmembershipspro.com](https://www.paidmembershipspro.com)
 
 == Changelog ==
+= 0.4 =
+* BUG FIX: Fixed an issue where site's running PHP 5.6 would fatal error. This uses a custom password checker for sites on PHP 5.6. Recommended PHP version is 7.2+
+
 = 0.3 =
 * BUG FIX: Fixed bug where a warning was shown if the $post global was empty. (Thanks, Mirco Babini)
 * ENHANCEMENT: Updated to use the same "Zxcvbn" library that core WordPress and PMPro use for checking password strength.
