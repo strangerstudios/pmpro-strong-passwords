@@ -81,7 +81,7 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 
 	// Run a custom check for older PHP versions (Pre 7).
 	if ( version_compare( phpversion(), '7', '<' ) ) {
-		return pmpro_strong_password_custom_checker( $password );
+		return pmpro_strong_password_custom_checker( $password, $username );
 	}
 
 
@@ -133,7 +133,7 @@ add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_passw
  * Function for 'older' PHP versions.
  * @since 0.4
  */
-function pmpro_strong_password_custom_checker( $password ) {
+function pmpro_strong_password_custom_checker( $password, $username ) {
 
 	$pass_ok = true;
 
