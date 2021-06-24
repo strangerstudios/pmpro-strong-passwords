@@ -4,7 +4,7 @@ namespace ZxcvbnPhp\Matchers;
 
 use ZxcvbnPhp\Matcher;
 
-class SpatialMatch extends Match
+class SpatialMatch extends BaseMatch
 {
     public const SHIFTED_CHARACTERS = '~!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:"ZXCVBNM<>?';
 
@@ -150,7 +150,7 @@ class SpatialMatch extends Match
                     $j += 1;
                 } else {
                     // otherwise push the pattern discovered so far, if any...
-                    
+
                     // Ignore length 1 or 2 chains.
                     if ($j - $i > 2) {
                         $result[] = [
