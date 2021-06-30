@@ -130,17 +130,17 @@ function pmprosp_pmpro_checkout_after_password() {
 add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_password', 1 );
 
 /**
- * Function for 'older' PHP versions.
+ * Function for PHP < 7.0
  * @since 0.4
  */
 function pmpro_strong_password_custom_checker( $password ) {
 
 	$pass_ok = true;
 
-	$password_min_length = apply_filters( 'pmprosp_password_min_length', 12 );
+	$minimum_password_length = apply_filters( 'pmprosp_minimum_password_length', 12 );
 
 	// Check for length (x characters)
-	if ( strlen( $password ) < $password_min_length ) {
+	if ( strlen( $password ) < $minimum_password_length ) {
 		pmpro_setMessage( esc_html__( sprintf( 'Your password must be at least %d characters long.', $password_min_length ), 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
