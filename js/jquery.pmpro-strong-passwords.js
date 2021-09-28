@@ -58,7 +58,14 @@ jQuery(document).ready(function(){
 		
 		var strength;		
 		if ( pass1 != '' ) {
-			strength = wp.passwordStrength.meter( pass1, wp.passwordStrength.userInputBlacklist(), pass1 );
+            
+            // Support Disallowed list for WP 5.5+
+            if ( typeof( wp.passwordStrength.userInputDisallowedList ) !== 'undefined' ) { 
+                strength = wp.passwordStrength.meter( pass1, wp.passwordStrength.userInputDisallowedList(), pass1 );
+            } else { 
+                strength = wp.passwordStrength.meter( pass1, wp.passwordStrength.userInputBlacklist(), pass1 );
+            }
+			
 		} else {
 			strength = -1;
 		}

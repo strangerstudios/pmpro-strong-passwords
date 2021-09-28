@@ -2,9 +2,9 @@
 Contributors: strangerstudios, scottsousa
 Tags: password,security,strong password
 Requires at least: 4.7
-Tested up to: 5.4.1
+Tested up to: 5.8
 Requires PHP: 7.2
-Stable tag: 0.4
+Stable tag: 0.5
 License: GPL 2.0
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
@@ -24,6 +24,12 @@ Improve security on your WordPress membership site.
 Please post support topics to [https://www.paidmembershipspro.com](https://www.paidmembershipspro.com)
 
 == Changelog ==
+= 0.5 - 2021-09-28 =
+* ENHANCEMENT: Added new filter to allow less required characters for site's using the custom password checker `pmprosp_minimum_password_length`. #41 (@mircobabini)
+* ENHANCEMENT: Update the Zxcvbn library to support PHP 8.0. #43 (@mircobabini)
+* BUG FIX/ENHANCEMENT: Fixed JavaScript warning for WordPress sites on 5.5.0+, support the newer method `userInputDisallowedList`. #37 (@andrewlimaza)
+* BUG FIX/ENHANCEMENT: Fixed issue for sites running PHP 7.2 or lower. New requirements for the Zxcvbn library requires PHP 7.2+, older PHP versions will run our custom checker. #35 (@andrewlimaza)
+
 = 0.4 =
 * BUG FIX: Fixed an issue where site's running PHP 5.6 would fatal error. This uses a custom password checker for sites on PHP 5.6. Recommended PHP version is 7.2+
 

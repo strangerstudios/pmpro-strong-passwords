@@ -54,7 +54,6 @@ function pmprosp_password_strength_scripts_and_styles() {
 		)
 	);
 }
-
 add_action( 'wp_enqueue_scripts', 'pmprosp_password_strength_scripts_and_styles' );
 
 /**
@@ -80,8 +79,8 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 		return $pmpro_continue_registration;
 
 	// Run a custom check for older PHP versions (Pre 7).
-	if ( version_compare( phpversion(), '7', '<' ) ) {
-		return pmpro_strong_password_custom_checker( $password );
+	if ( version_compare( phpversion(), '7.2', '<' ) ) {
+		return pmpro_strong_password_custom_checker( $password, $username );
 	}
 
 
@@ -130,16 +129,18 @@ function pmprosp_pmpro_checkout_after_password() {
 add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_password', 1 );
 
 /**
- * Function for 'older' PHP versions.
+ * Function for PHP < 7.0
  * @since 0.4
  */
-function pmpro_strong_password_custom_checker( $password ) {
+function pmpro_strong_password_custom_checker( $password, $username ) {
 
 	$pass_ok = true;
 
-	// Check for length (8 characters)
-	if ( strlen( $password ) < 12 ) {
-		pmpro_setMessage( esc_html__( 'Your password must be at least 12 characters long.', 'pmpro-strong-passwords' ), 'pmpro_error' );
+	$minimum_password_length = apply_filters( 'pmprosp_minimum_password_length', 12 );
+
+	// Check for length (x characters)
+	if ( strlen( $password ) < $minimum_password_length ) {
+		pmpro_setMessage( esc_html__( sprintf( 'Your password must be at least %d characters long.', $password_min_length ), 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
