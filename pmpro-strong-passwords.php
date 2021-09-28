@@ -54,7 +54,6 @@ function pmprosp_password_strength_scripts_and_styles() {
 		)
 	);
 }
-
 add_action( 'wp_enqueue_scripts', 'pmprosp_password_strength_scripts_and_styles' );
 
 /**
@@ -80,7 +79,7 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 		return $pmpro_continue_registration;
 
 	// Run a custom check for older PHP versions (Pre 7).
-	if ( version_compare( phpversion(), '7', '<' ) ) {
+	if ( version_compare( phpversion(), '7.2', '<' ) ) {
 		return pmpro_strong_password_custom_checker( $password, $username );
 	}
 
