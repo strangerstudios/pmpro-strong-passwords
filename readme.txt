@@ -4,7 +4,7 @@ Tags: password,security,strong password
 Requires at least: 4.7
 Tested up to: 5.8
 Requires PHP: 7.2
-Stable tag: 0.5
+Stable tag: 0.5.0
 License: GPL 2.0
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
 
