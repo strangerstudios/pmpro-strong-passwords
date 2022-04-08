@@ -140,7 +140,7 @@ function pmpro_strong_password_custom_checker( $password, $username ) {
 
 	// Check for length (x characters)
 	if ( strlen( $password ) < $minimum_password_length ) {
-		pmpro_setMessage( esc_html__( sprintf( 'Your password must be at least %d characters long.', $password_min_length ), 'pmpro-strong-passwords' ), 'pmpro_error' );
+		pmpro_setMessage( esc_html__( sprintf( 'Your password must be at least %d characters long.', $minimum_password_length ), 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
