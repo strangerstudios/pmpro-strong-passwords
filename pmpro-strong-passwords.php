@@ -21,6 +21,10 @@ function pmprosp_load_plugin_text_domain() {
 }
 add_action( 'init', 'pmprosp_load_plugin_text_domain' );
 
+/**
+ * Enqueue scripts and styles for strong password bar.
+ * @since 1.0
+ */
 function pmprosp_password_strength_scripts_and_styles() {
 	global $pmpro_pages, $post;
 
@@ -29,30 +33,45 @@ function pmprosp_password_strength_scripts_and_styles() {
 		return;
 	}
 
+	// Lets do some checks for checkout pages, even ones that are 'standalone'.
+	$is_checkout = false;
+	if ( pmpro_is_checkout() ) {
+		$is_checkout = true;
+	}
+
+	// Check if we're using the Signup Shortcode Add On.
+	if ( isset( $post ) && ! $is_checkout ) {
+		// Has signup shortcode.
+		if ( strpos( $post->post_content, '[pmpro_signup' ) !== false ) {
+			$is_checkout = true;
+		}
+	}
+
 	// Only load on certain PMPro pages.
-	if ( is_page( $pmpro_pages['checkout'] ) || ( isset( $post ) && strpos( $post->post_content, '[pmpro_signup' ) !== false ) ) {
+	if ( $is_checkout ) {
 		wp_enqueue_script( 'password-strength-meter' );
 		wp_enqueue_script( 'pmprosp-js', plugins_url( 'js/jquery.pmpro-strong-passwords.js', __FILE__ ), array( 'jquery', 'password-strength-meter' ), false, true  );
 		wp_enqueue_style( 'pmprosp-css', plugins_url( 'css/pmpro-strong-passwords.css', __FILE__ ) );
-	}
+	
 
-	wp_localize_script(
-		'password-strength-meter',
-		'pwsL10n',
-		array(
-			'empty'    => _x( 'Strength indicator', 'password strength', 'pmpro-strong-passwords' ),
-			'short'    => _x( 'Very weak', 'password strength', 'pmpro-strong-passwords' ),
-			'bad'      => _x( 'Weak', 'password strength', 'pmpro-strong-passwords' ),
-			'good'     => _x( 'Medium', 'password strength', 'pmpro-strong-passwords' ),
-			'strong'   => _x( 'Strong', 'password strength', 'pmpro-strong-passwords' ),
-			'mismatch' => _x( 'Mismatch', 'password strength', 'pmpro-strong-passwords' ),
-			'password_tooltip' => wp_get_password_hint(),
-			'progressbar_bg_color' => apply_filters( 'pmprosp_progressbar_bg_color', '#aaaaaa' ),
-			'display_progressbar' => apply_filters( 'pmprosp_display_progressbar', true ),
-			'display_password_strength' => apply_filters( 'pmprosp_display_password_strength', true ),
-			'display_password_tooltip' => apply_filters( 'pmprosp_display_password_tooltip', true )
-		)
-	);
+		wp_localize_script(
+			'password-strength-meter',
+			'pwsL10n',
+			array(
+				'empty'    => _x( 'Strength indicator', 'password strength', 'pmpro-strong-passwords' ),
+				'short'    => _x( 'Very weak', 'password strength', 'pmpro-strong-passwords' ),
+				'bad'      => _x( 'Weak', 'password strength', 'pmpro-strong-passwords' ),
+				'good'     => _x( 'Medium', 'password strength', 'pmpro-strong-passwords' ),
+				'strong'   => _x( 'Strong', 'password strength', 'pmpro-strong-passwords' ),
+				'mismatch' => _x( 'Mismatch', 'password strength', 'pmpro-strong-passwords' ),
+				'password_tooltip' => wp_get_password_hint(),
+				'progressbar_bg_color' => apply_filters( 'pmprosp_progressbar_bg_color', '#aaaaaa' ),
+				'display_progressbar' => apply_filters( 'pmprosp_display_progressbar', true ),
+				'display_password_strength' => apply_filters( 'pmprosp_display_password_strength', true ),
+				'display_password_tooltip' => apply_filters( 'pmprosp_display_password_tooltip', true )
+			)
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'pmprosp_password_strength_scripts_and_styles' );
 
