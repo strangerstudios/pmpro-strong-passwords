@@ -35,7 +35,7 @@ function pmprosp_password_strength_scripts_and_styles() {
 
 	// Lets do some checks for checkout pages, even ones that are 'standalone'.
 	$is_checkout = false;
-	if ( is_page( $pmpro_pages['checkout'] ) ) {
+	if ( pmpro_is_checkout() ) {
 		$is_checkout = true;
 	}
 
@@ -43,16 +43,6 @@ function pmprosp_password_strength_scripts_and_styles() {
 	if ( isset( $post ) && ! $is_checkout ) {
 		// Has signup shortcode.
 		if ( strpos( $post->post_content, '[pmpro_signup' ) !== false ) {
-			$is_checkout = true;
-		}
-
-		// has checkout shortcode
-		if ( strpos( $post->post_content, '[pmpro_checkout' ) !== false ) {
-			$is_checkout = true;
-		}
-
-		// has block
-		if ( has_block( 'pmpro/checkout-page', $post ) ) {
 			$is_checkout = true;
 		}
 	}
