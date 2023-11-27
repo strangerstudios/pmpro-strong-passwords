@@ -39,7 +39,7 @@ function pmprosp_password_strength_scripts_and_styles() {
 		$is_checkout = true;
 	}
 
-	// Not the checkout page, but has the shortcode or block.
+	// Check if we're using the Signup Shortcode Add On.
 	if ( isset( $post ) && ! $is_checkout ) {
 		// Has signup shortcode.
 		if ( strpos( $post->post_content, '[pmpro_signup' ) !== false ) {
