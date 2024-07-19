@@ -121,9 +121,11 @@ add_filter( 'pmpro_registration_checks', 'pmpro_strong_password_check' );
 
 function pmprosp_pmpro_checkout_after_password() {
 	?>
-	<div id="pmprosp-container"></div>
+	<div class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_form-strong-password-container' ) ); ?>">
+		<div id="pmprosp-container" class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_form-strong-password-indicator' ) ); ?>"></div>
+		<p id="pmprosp-password-notice" class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_form_hint' ) ); ?>"><?php echo wp_get_password_hint(); ?></p>
+	</div>
 	<?php
-	echo '<small id="pmprosp-password-notice">' . wp_get_password_hint() . '</small>';
 }
 // load as early as possible in case there are uses of filter
 add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_password', 1 );
@@ -164,7 +166,7 @@ function pmpro_strong_password_custom_checker( $password, $username ) {
 
 	// Check for uppercase
 	if ( ! preg_match( '/[A-Z]/', $password ) ) {
-		pmpro_setMessage( __( 'Your password must contain at least 1 uppercase letter.', 'pmpro-strong-passwords' ), 'pmpro_error' );
+		pmpro_setMessage( esc_html__( 'Your password must contain at least 1 uppercase letter.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
@@ -190,8 +192,8 @@ function pmpro_strong_password_custom_checker( $password, $username ) {
 function pmprosp_plugin_row_meta( $links, $file ) {
 	if ( strpos( $file, 'pmpro-strong-passwords.php' ) !== false ) {
 		$new_links = array(
-			'<a href="' . esc_url( apply_filters( 'pmpro_docs_url', 'https://paidmembershipspro.com/documentation/' ) ) . '" title="' . esc_attr( __( 'View PMPro Documentation', 'paid-memberships-pro' ) ) . '">' . __( 'Docs', 'paid-memberships-pro' ) . '</a>',
-			'<a href="' . esc_url( apply_filters( 'pmpro_support_url', 'https://paidmembershipspro.com/support/' ) ) . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'paid-memberships-pro' ) ) . '">' . __( 'Support', 'paid-memberships-pro' ) . '</a>',
+			'<a href="' . esc_url( apply_filters( 'pmpro_docs_url', 'https://paidmembershipspro.com/documentation/' ) ) . '" title="' . esc_attr__( 'View PMPro Documentation', 'paid-memberships-pro' ) . '">' . esc_html__( 'Docs', 'paid-memberships-pro' ) . '</a>',
+			'<a href="' . esc_url( apply_filters( 'pmpro_support_url', 'https://paidmembershipspro.com/support/' ) ) . '" title="' . esc_attr__( 'Visit Customer Support Forum', 'paid-memberships-pro' ) . '">' . esc_html__( 'Support', 'paid-memberships-pro' ) . '</a>',
 		);
 		$links = array_merge( $links, $new_links );
 	}
