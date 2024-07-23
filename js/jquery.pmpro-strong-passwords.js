@@ -24,7 +24,7 @@ jQuery(document).ready(function(){
 
     // Show password tooltip depending on filter
     if ( pwsL10n.display_password_tooltip ) {
-        jQuery('.pmpro_checkout-field-password label').append('<span class="pmprosp-tooltip__password" data-tooltip-location="right" data-tooltip="' + pwsL10n.password_tooltip + '">?</span>');
+        jQuery('.pmpro_form_field-password label').append('<span class="pmprosp-tooltip__password" data-tooltip-location="right" data-tooltip="' + pwsL10n.password_tooltip + '">?</span>');
     }
 
     // Show password strength pill depending on filter
