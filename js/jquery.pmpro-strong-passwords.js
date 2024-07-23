@@ -5,7 +5,7 @@
 jQuery(document).ready(function(){ 
 
     // Move the stong password container to just below the PMPro password 1 field.
-    jQuery('#pmprosp-container').insertAfter('.pmpro_form-field-password');
+    jQuery('#pmprosp-container').insertAfter('.pmpro_form_field-password');
 
     // Show strength progressbar depending on filter
     if ( pwsL10n.display_progressbar ) {
@@ -24,12 +24,12 @@ jQuery(document).ready(function(){
 
     // Show password tooltip depending on filter
     if ( pwsL10n.display_password_tooltip ) {
-        jQuery('.pmpro_form-field-password label').append('<span class="pmprosp-tooltip__password" data-tooltip-location="right" data-tooltip="' + pwsL10n.password_tooltip + '">?</span>');
+        jQuery('.pmpro_form_field-password label').append('<span class="pmprosp-tooltip__password" data-tooltip-location="right" data-tooltip="' + pwsL10n.password_tooltip + '">?</span>');
     }
 
     // Show password strength pill depending on filter
     if ( pwsL10n.display_password_strength ) {
-        jQuery('.pmpro_form-field-password label').append('<span id="pmprosp-password-strength"></span>');
+        jQuery('.pmpro_form_field-password label').append('<span id="pmprosp-password-strength"></span>');
     }
     
     // Check if password is strong or not.
