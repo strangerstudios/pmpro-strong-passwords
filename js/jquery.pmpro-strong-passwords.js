@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
 
     // Show password strength pill depending on filter
     if (pwsL10n.display_password_strength) {
-        // Use nth-child to target the password field label
+        // Add password strength element to page
         jQuery('.pmprosp-progressbar').after('<span id="pmprosp-password-strength"></span>');
     }
   
