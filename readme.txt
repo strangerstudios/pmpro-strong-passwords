@@ -1,8 +1,8 @@
 === Paid Memberships Pro - Require Strong Passwords ===
 Contributors: strangerstudios, scottsousa
-Tags: password,security,strong password
-Requires at least: 4.7
-Tested up to: 5.8
+Tags: password, security, strong password
+Requires at least: 5.2
+Tested up to: 6.6
 Requires PHP: 7.2
 Stable tag: 0.5.0
 License: GPL 2.0
