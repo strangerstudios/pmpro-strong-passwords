@@ -4,13 +4,15 @@ Plugin Name: Paid Memberships Pro - Require Strong Passwords
 Version: 0.5.0
 Plugin URI: https://www.paidmembershipspro.com/add-ons/require-strong-passwords/
 Description: Force users to submit strong passwords on checkout.
-Author: Stranger Studios
+Author: Paid Memberships Pro
 Author URI: https://www.paidmembershipspro.com
 Text Domain: pmpro-strong-passwords
 Domain Path: /languages
 */
 
 use ZxcvbnPhp\Zxcvbn;
+
+define( 'PMPROSP_VERSION', '0.5' );
 
 /**
  * Load text domain
@@ -51,8 +53,7 @@ function pmprosp_password_strength_scripts_and_styles() {
 	if ( $is_checkout ) {
 		wp_enqueue_script( 'password-strength-meter' );
 		wp_enqueue_script( 'pmprosp-js', plugins_url( 'js/jquery.pmpro-strong-passwords.js', __FILE__ ), array( 'jquery', 'password-strength-meter' ), false, true  );
-		wp_enqueue_style( 'pmprosp-css', plugins_url( 'css/pmpro-strong-passwords.css', __FILE__ ) );
-	
+		wp_enqueue_style( 'pmprosp-css', plugins_url( 'css/pmpro-strong-passwords.css', __FILE__ ), array(), PMPROSP_VERSION, 'all' );
 
 		wp_localize_script(
 			'password-strength-meter',
@@ -140,9 +141,11 @@ add_filter( 'pmpro_registration_checks', 'pmpro_strong_password_check' );
 
 function pmprosp_pmpro_checkout_after_password() {
 	?>
-	<div id="pmprosp-container"></div>
+	<div class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_form_field pmpro_form-strong-password-container', 'pmpro_form-strong-password-container' ) ); ?>">
+		<div id="pmprosp-container" class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_form-strong-password-indicator' ) ); ?>"></div>
+		<p id="pmprosp-password-notice" class="<?php echo esc_attr( pmpro_get_element_class( 'pmpro_form_hint' ) ); ?>"><?php echo wp_get_password_hint(); ?></p>
+	</div>
 	<?php
-	echo '<small id="pmprosp-password-notice">' . wp_get_password_hint() . '</small>';
 }
 // load as early as possible in case there are uses of filter
 add_filter( 'pmpro_checkout_after_password', 'pmprosp_pmpro_checkout_after_password', 1 );
@@ -159,7 +162,8 @@ function pmpro_strong_password_custom_checker( $password, $username ) {
 
 	// Check for length (x characters)
 	if ( strlen( $password ) < $minimum_password_length ) {
-		pmpro_setMessage( esc_html__( sprintf( 'Your password must be at least %d characters long.', $minimum_password_length ), 'pmpro-strong-passwords' ), 'pmpro_error' );
+		/* translators: %d is the minimum password length */
+		pmpro_setMessage( sprintf( esc_html__( 'Your password must be at least %d characters long.', 'pmpro-strong-passwords' ), $minimum_password_length ), 'pmpro_error' );
 		return false;
 	}
 
@@ -183,7 +187,7 @@ function pmpro_strong_password_custom_checker( $password, $username ) {
 
 	// Check for uppercase
 	if ( ! preg_match( '/[A-Z]/', $password ) ) {
-		pmpro_setMessage( __( 'Your password must contain at least 1 uppercase letter.', 'pmpro-strong-passwords' ), 'pmpro_error' );
+		pmpro_setMessage( esc_html__( 'Your password must contain at least 1 uppercase letter.', 'pmpro-strong-passwords' ), 'pmpro_error' );
 		return false;
 	}
 
@@ -209,8 +213,8 @@ function pmpro_strong_password_custom_checker( $password, $username ) {
 function pmprosp_plugin_row_meta( $links, $file ) {
 	if ( strpos( $file, 'pmpro-strong-passwords.php' ) !== false ) {
 		$new_links = array(
-			'<a href="' . esc_url( apply_filters( 'pmpro_docs_url', 'https://paidmembershipspro.com/documentation/' ) ) . '" title="' . esc_attr( __( 'View PMPro Documentation', 'paid-memberships-pro' ) ) . '">' . __( 'Docs', 'paid-memberships-pro' ) . '</a>',
-			'<a href="' . esc_url( apply_filters( 'pmpro_support_url', 'https://paidmembershipspro.com/support/' ) ) . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'paid-memberships-pro' ) ) . '">' . __( 'Support', 'paid-memberships-pro' ) . '</a>',
+			'<a href="' . esc_url('https://www.paidmembershipspro.com/add-ons/require-strong-passwords/')  . '" title="' . esc_attr( __( 'View Documentation', 'pmpro-strong-passwords' ) ) . '">' . __( 'Docs', 'pmpro-strong-passwords' ) . '</a>',
+			'<a href="' . esc_url('https://www.paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro-strong-passwords' ) ) . '">' . __( 'Support', 'pmpro-strong-passwords' ) . '</a>',
 		);
 		$links = array_merge( $links, $new_links );
 	}
