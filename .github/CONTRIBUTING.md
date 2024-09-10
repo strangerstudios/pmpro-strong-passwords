@@ -4,7 +4,7 @@ Paid Memberships Pro is the "community solution" for membership sites on WordPre
 
 When contributing, please follow these guidelines to ensure things work as smoothly as possible.
 
-__Please Note:__ GitHub is for bug reports and contributions only. If you have a support or customization question, go to our [Member Support Page](http://www.paidmembershipspro.com/support/) instead.
+__Please Note:__ GitHub is for bug reports and contributions only. If you have a support or customization question, go to our [Member Support Page](https://www.paidmembershipspro.com/support/) instead.
 
 ## Getting Started
 
@@ -27,7 +27,7 @@ __Please Note:__ GitHub is for bug reports and contributions only. If you have a
 * Create a new local branch for each separate bug fix or feature. This will ensure that each pull request is for one issue only and easier to process.
 	* Use `git checkout -b nameofmybugfixorfeature` to create the new branch
 * Make the changes to your local repository.
-* Ensure you stick to the [WordPress Coding Standards](https://codex.wordpress.org/WordPress_Coding_Standards) (even though much of the PMPro code does not currently)
+* Ensure you stick to the [WordPress Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/) (even though much of the PMPro code does not currently)
 * If you have an automatic beautifier in your IDE or dev environment, turn it off. Unrelated style changes in your pull requests will make them harder to process. Feel free to message the core development team to ask them to clean up a file you are working on if the inconsitent coding styles is bothering you.
 * You can update the readme.txt to include a comment about your fix or feature in the changelog, but if you do not the core team will do it for you.
 * When committing, reference your issue (if present) and include a note about the fix in the commit message.

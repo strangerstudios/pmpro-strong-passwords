@@ -1,19 +1,18 @@
 === Paid Memberships Pro - Require Strong Passwords ===
 Contributors: strangerstudios, scottsousa
 Tags: password, security, strong password
-Requires at least: 5.2
+Requires at least: 5.4
 Tested up to: 6.6
 Requires PHP: 7.2
-Stable tag: 0.5.0
-License: GPL 2.0
-License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+Stable tag: 0.5.1
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Force users to submit strong passwords on checkout.
 
 == Description ==
-Require members to use strong passwords on their initial checkout. This makes use of the default WordPress password strength calculation (the same functionality when changing your default WordPress password.)
 
-Improve security on your WordPress membership site.
+Require members to use strong passwords on their initial checkout. This makes use of the default WordPress password strength calculation (the same functionality when changing your default WordPress password).
 
 == Installation ==
 1. Upload the ‘pmpro-strong-passwords’ directory to the ‘/wp-content/plugins/’ directory of your site.
@@ -24,6 +23,16 @@ Improve security on your WordPress membership site.
 Please post support topics to [https://www.paidmembershipspro.com](https://www.paidmembershipspro.com)
 
 == Changelog ==
+
+= 0.5.1 - 2024-09-10 =
+* ENHANCEMENT: Now localizing the suggestions returned from the Zxcvbn library. (@kimcoleman)
+* ENHANCEMENT: Update the Zxcvbn library to latest release v1.3.1. #55 (@kimcoleman)
+* ENHANCEMENT: Added better support for v3.1 and use built-in CSS classes where possible. #53 (@andrewlimaza)
+* ENHANCEMENT: Adjusted Javascript to work with v3.1 new CSS classes. #53 (@ipokkel)
+* BUG FIX: Fixes an issue when using the block or shortcode on a page that isn't set to the checkout page options in PMPro. #51 (@andrewlimaza)
+* BUG FIX: Fixed incorrect variable passed to localized text string. #48 (@ipokkel)
+* SECURITY: Improved escaping on text. #53 (@andrewlimaza)
+
 = 0.5 - 2021-09-28 =
 * ENHANCEMENT: Added new filter to allow less required characters for site's using the custom password checker `pmprosp_minimum_password_length`. #41 (@mircobabini)
 * ENHANCEMENT: Update the Zxcvbn library to support PHP 8.0. #43 (@mircobabini)
