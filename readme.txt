@@ -25,7 +25,7 @@ Please post support topics to [https://www.paidmembershipspro.com](https://www.p
 == Changelog ==
 
 = 0.5.1 - 2024-09-10 =
-* ENHANCEMENT: Now localizing the suggestions returned from the Zxcvbn library. (@kimcoleman)
+* ENHANCEMENT: Now localizing the suggestions returned from the Zxcvbn library. #56 (@kimcoleman)
 * ENHANCEMENT: Update the Zxcvbn library to latest release v1.3.1. #55 (@kimcoleman)
 * ENHANCEMENT: Added better support for v3.1 and use built-in CSS classes where possible. #53 (@andrewlimaza)
 * ENHANCEMENT: Adjusted Javascript to work with v3.1 new CSS classes. #53 (@ipokkel)
