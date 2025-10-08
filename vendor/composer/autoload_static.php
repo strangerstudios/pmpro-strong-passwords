@@ -34,6 +34,30 @@ class ComposerStaticInit3190ae3a6de7019bf7e8d2ff066232c8
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
+        'ZxcvbnPhp\\Feedback' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Feedback.php',
+        'ZxcvbnPhp\\Matcher' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matcher.php',
+        'ZxcvbnPhp\\Matchers\\BaseMatch' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matchers/BaseMatch.php',
+        'ZxcvbnPhp\\Matchers\\Bruteforce' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matchers/Bruteforce.php',
+        'ZxcvbnPhp\\Matchers\\DateMatch' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matchers/DateMatch.php',
+        'ZxcvbnPhp\\Matchers\\DictionaryMatch' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matchers/DictionaryMatch.php',
+        'ZxcvbnPhp\\Matchers\\L33tMatch' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matchers/L33tMatch.php',
+        'ZxcvbnPhp\\Matchers\\MatchInterface' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matchers/MatchInterface.php',
+        'ZxcvbnPhp\\Matchers\\RepeatMatch' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matchers/RepeatMatch.php',
+        'ZxcvbnPhp\\Matchers\\ReverseDictionaryMatch' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matchers/ReverseDictionaryMatch.php',
+        'ZxcvbnPhp\\Matchers\\SequenceMatch' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matchers/SequenceMatch.php',
+        'ZxcvbnPhp\\Matchers\\SpatialMatch' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matchers/SpatialMatch.php',
+        'ZxcvbnPhp\\Matchers\\YearMatch' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Matchers/YearMatch.php',
+        'ZxcvbnPhp\\Math\\Binomial' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Math/Binomial.php',
+        'ZxcvbnPhp\\Math\\BinomialProvider' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Math/BinomialProvider.php',
+        'ZxcvbnPhp\\Math\\Impl\\AbstractBinomialProvider' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Math/Impl/AbstractBinomialProvider.php',
+        'ZxcvbnPhp\\Math\\Impl\\AbstractBinomialProviderWithFallback' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Math/Impl/AbstractBinomialProviderWithFallback.php',
+        'ZxcvbnPhp\\Math\\Impl\\BinomialProviderFloat64' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Math/Impl/BinomialProviderFloat64.php',
+        'ZxcvbnPhp\\Math\\Impl\\BinomialProviderInt64' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Math/Impl/BinomialProviderInt64.php',
+        'ZxcvbnPhp\\Math\\Impl\\BinomialProviderPhp73Gmp' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Math/Impl/BinomialProviderPhp73Gmp.php',
+        'ZxcvbnPhp\\Scorer' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Scorer.php',
+        'ZxcvbnPhp\\TimeEstimator' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/TimeEstimator.php',
+        'ZxcvbnPhp\\Zxcvbn' => __DIR__ . '/..' . '/bjeavons/zxcvbn-php/src/Zxcvbn.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
