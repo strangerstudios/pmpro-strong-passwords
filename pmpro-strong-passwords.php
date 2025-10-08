@@ -171,7 +171,12 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 			}
 		}
 
-		pmpro_setMessage( __( 'Password Error:', 'pmpro-strong-passwords' ) . ' ' .apply_filters( 'pmprosp_minimum_password_score_message', implode( " ", $suggestions ), $password_strength ), 'pmpro_error' );
+		// If the suggestions are still empty, add a generic one.
+		if ( empty( $suggestions ) ) {
+			$suggestions[] = __( "Your password is too weak. Please choose a stronger password.", 'pmpro-strong-passwords' );
+		}
+
+		pmpro_setMessage( __( 'Password Error:', 'pmpro-strong-passwords' ) . ' ' . apply_filters( 'pmprosp_minimum_password_score_message', implode( " ", $suggestions ), $password_strength ), 'pmpro_error' );
 		return false;
 	}
 
