@@ -5,7 +5,7 @@
 jQuery(document).ready(function(){ 
 
 	// If there is no password field, exit.
-	if ( jQuery( '#password' ).length == 0 ) {
+	if ( jQuery( '#password' ).length === 0 ) {
 		// Hide the hint if it is displayed as well.
 		jQuery( '.pmpro_form #pmprosp-password-notice' ).remove();
 		return;
