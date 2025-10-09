@@ -2,9 +2,9 @@
 Contributors: strangerstudios, scottsousa
 Tags: password, security, strong password
 Requires at least: 5.4
-Tested up to: 6.6
+Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 0.5.1
+Stable tag: 0.5.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,6 +23,10 @@ Require members to use strong passwords on their initial checkout. This makes us
 Please post support topics to [https://www.paidmembershipspro.com](https://www.paidmembershipspro.com)
 
 == Changelog ==
+= 0.5.2 - 2025-10-09 =
+* ENHANCEMENT: Update the Zxcvbn library to latest release v1.4.2. #62 (@andrewlimaza)
+* ENHANCEMENT: Show a default error message if no message is returned from the Zxcvbn library. #60 (@andrewlimaza)
+* BUG FIX: Fixed an issue where the password hint and meter would show up on the Signup Shortcode Add On when the password field was hidden. #61 (@andrewlimaza)
 
 = 0.5.1 - 2024-09-11 =
 * ENHANCEMENT: Now localizing the suggestions returned from the Zxcvbn library. #56 (@kimcoleman)
