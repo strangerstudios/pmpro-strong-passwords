@@ -15,12 +15,17 @@ Force users to submit strong passwords on checkout.
 Require members to use strong passwords on their initial checkout. This makes use of the default WordPress password strength calculation (the same functionality when changing your default WordPress password).
 
 == Installation ==
-1. Upload the ‘pmpro-strong-passwords’ directory to the ‘/wp-content/plugins/’ directory of your site.
-2. Activate the plugin through the ‘Plugins’ menu in WordPress.
 
-== Frequently Asked Questions ==
-= I need help with this plugin =
-Please post support topics to [https://www.paidmembershipspro.com](https://www.paidmembershipspro.com)
+= Prerequisites =
+1. You must have Paid Memberships Pro installed and activated on your site.
+
+= Download, Install and Activate! =
+1. Download the latest version of the plugin.
+1. Unzip the downloaded file to your computer.
+1. Upload the /pmpro-strong-passwords/ directory to the /wp-content/plugins/ directory of your site.
+1. Activate the plugin through the 'Plugins' menu in WordPress.
+
+View full documentation at: https://www.paidmembershipspro.com/add-ons/require-strong-passwords/
 
 == Changelog ==
 = 0.5.2 - 2025-10-09 =
