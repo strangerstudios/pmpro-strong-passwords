@@ -13,6 +13,10 @@
 
 use ZxcvbnPhp\Zxcvbn;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 define( 'PMPROSP_VERSION', '0.5.2' );
 
 /**
@@ -92,17 +96,20 @@ function pmpro_strong_password_check( $pmpro_continue_registration ) {
 	if( ! $pmpro_continue_registration )
 		return $pmpro_continue_registration;
 
-	// Get the username from the request.
-	$username = isset( $_REQUEST['username'] ) ? sanitize_text_field( $_REQUEST['username'] ) : NULL;
+	// Nonce is verified by PMPro core checkout (pmpro_checkout_nonce) before pmpro_registration_checks runs. This only validates input.
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended
 
-	// Note: We can't sanitize the passwords. They get hashed when saved.
-	// phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	// Get the username from the request.
+	$username = isset( $_REQUEST['username'] ) ? sanitize_text_field( $_REQUEST['username'] ) : NULL; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- compared against the raw slashed password.
+
+	// Note: We can't sanitize or unslash the passwords. They get hashed when saved and WP checks the slashed raw value.
+	// phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 	if ( isset( $_REQUEST['password'] ) ) {
 		$password = $_REQUEST['password'];
 	} else {
 		$password = '';
 	}
-	// phpcs:enable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	// phpcs:enable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Recommended
 
 	// no password (existing user is checking out)
 	if ( empty( $password ) )
