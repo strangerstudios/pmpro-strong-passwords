@@ -2,9 +2,9 @@
 Contributors: strangerstudios, scottsousa
 Tags: password, security, strong password
 Requires at least: 5.4
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 7.2
-Stable tag: 0.5.2
+Stable tag: 0.5.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,6 +28,9 @@ Require members to use strong passwords on their initial checkout. This makes us
 View full documentation at: https://www.paidmembershipspro.com/add-ons/require-strong-passwords/
 
 == Changelog ==
+= 0.5.3 - 2026-09-29 =
+* SECURITY: Improved sanitization and escaping throughout the plugin to resolve Plugin Check security findings. #63 (@dparker1005)
+
 = 0.5.2 - 2025-10-09 =
 * ENHANCEMENT: Update the Zxcvbn library to latest release v1.4.2. #62 (@andrewlimaza)
 * ENHANCEMENT: Show a default error message if no message is returned from the Zxcvbn library. #60 (@andrewlimaza)

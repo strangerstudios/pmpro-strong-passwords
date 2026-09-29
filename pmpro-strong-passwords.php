@@ -3,7 +3,7 @@
  * Plugin Name: Paid Memberships Pro - Require Strong Passwords
  * Plugin URI: https://www.paidmembershipspro.com/add-ons/require-strong-passwords/
  * Description: Force users to submit strong passwords on checkout.
- * Version: 0.5.2
+ * Version: 0.5.3
  * Author: Paid Memberships Pro
  * Author URI: https://www.paidmembershipspro.com
  * Text Domain: pmpro-strong-passwords
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'PMPROSP_VERSION', '0.5.2' );
+define( 'PMPROSP_VERSION', '0.5.3' );
 
 /**
  * Load text domain
